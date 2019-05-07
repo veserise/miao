@@ -11,7 +11,7 @@
   <h2>Lorem ipsum.</h2>
   <h3> Lorem ipsum dolor.</h3>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id maxime corrupti, nulla earum possimus vitae omnis odio pariatur officia! Odit ipsa alias labore nostrum sint ex non repellendus, doloremque et.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit quaerat sint commodi est itaque vero, incidunt, quisquam obcaecati iusto minus inventore voluptatum. Consequuntur, at sequi ut nihil fugit amet possimus.</p>
+  <p style=" color:red;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit quaerat sint commodi est itaque vero, incidunt, quisquam obcaecati iusto minus inventore voluptatum. Consequuntur, at sequi ut nihil fugit amet possimus.</p>
   <a href="http://www.jd.com" target="_blank">在新窗口打开京东</a>
   <a href="mailto:1005281785@qq.com">点击给我发邮件</a>
   <a href="#buttom">挑战到本页的底部</a>
@@ -21,10 +21,8 @@
   <hr>
   <hr>
   <marquee behavior="" direction="left">飘~~~</marquee>
-  <p>这<em>几种强调</em> <strong>有什么</strong><b> 区别呢？</b> <u>这个呢？</u><i>这个呢？</i>  </p>
-  
+  <p><em>这几种强调</em> <strong>有什么</strong><b> 区别呢？</b> <u>这个呢？</u><i>这个呢？</i>  </p>
   <p>&lt;!--这段注释需要出现在页面里面--!&gt;</p>  
-  
   <p>html的注释怎么写？</p>
   <p>下面是一段JavaScript代码，最合适用何种标签表示呢？</p>  
   <pre>
@@ -64,11 +62,10 @@
     <dd>豆豆</dd>
   </dl>
   <hr>
-
-  <form action="https://www.google.com.hk/search"></form>
-    <h3>Google搜索</h3>
-    <input type="text" name="search" placeholder="请输入想要搜索的内容">
-    <button >在新窗口打开搜索结果</button>
+  <h3>Google搜索</h3>
+  <form action="https://www.google.com.hk/search" target="_blank" >
+    <input type="text" placeholder="请输入想要搜索的内容" name="q" required autocomplete="off">
+    <button>在新窗口打开搜索结果</button>
   </form>
   <hr>
   <p>个人信息调查表</p>
@@ -80,31 +77,29 @@
               <input type="radio" id="2">女
             </dd>
           <dt>年龄</dt>
-            <dd>
-                <select name="age">
-                    <option value="" selected hidden>请选择</option>
-                    <optgroup label="少年"> 
-                      <option value="">1-6岁</option>
-                      <option value="">6-12岁</option>
-                    </optgroup>
-                   
-                    <optgroup label="青年">
-                        <option value="">13-15岁</option>
-                        <option value="">16-18岁</option>
-                    </optgroup>
-              
-                    <optgroup label="壮年">
-                        <option value="">18-22岁</option>
-                        <option value="">23-30岁</option>
-                    </optgroup>
-                   
-                  </select>
+          <dd>
+              <select name="age">
+                  <option value="" selected hidden>请选择</option>
+                  <optgroup label="少年"> 
+                    <option value="">1-6岁</option>
+                    <option value="">6-12岁</option>
+                  </optgroup>
+                  
+                  <optgroup label="青年">
+                      <option value="">13-15岁</option>
+                      <option value="">16-18岁</option>
+                  </optgroup>
+            
+                  <optgroup label="壮年">
+                      <option value="">18-22岁</option>
+                      <option value="">23-30岁</option>
+                  </optgroup>
+                </select>
             </dd>
           <dt>生日</dt>
           <dd>
             <input type="date">
           </dd>
-          
           <dt>生辰 </dt>
           <dd>
             <input type="time">
@@ -123,7 +118,6 @@
             </dd>
       </dl>
   </form>
-  
   <form action="">
       <fieldset>
           <legend>这里面的全部禁用了</legend>
@@ -135,6 +129,66 @@
         <button type="submit" >提交</button>
         <button type="reset">重置</button>
   </form>
- 
+  <br>
+  <table border="1px;">
+    <caption>货品列表</caption>
+    <colgroup>
+      <col>
+      <col style=" background-color:red;">
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th>品名</th>
+        <th>进价</th>
+        <th>出价</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>001</td>
+        <td>苹果</td>
+        <td rowspan="2">5</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>001</td>
+        <td>桔子</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>001</td>
+        <td>香蕉</td>
+        <td>5</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>001</td>
+        <td>山竹</td>
+        <td>5</td>
+        <td>8</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <img title="image title" width="300px" src="https://drscdn.500px.org/photo/174778125/m%3D1170_k%3D1/2841ccf2a3720e8e794a6a6930f6ff2c" alt="图片加载失败" usemap="#img">
+  <map name="img">
+    <area shape="rect" coords="55,108,205,200" href="http://www.mi.com" alt="" name="rect">
+    <area shape="crice" coords="133,262,90" href="" alt="">
+    <area shape="poly" coords="57,82,8,265,163,397,225,256,187,83" href="" alt="">
+  </map>
+  <hr>
+  <a href="http://www.mi.com" target="iframe">点击我会在下面的frame里打开小米商场，但是为什么打不开呢</a>
+  <br>
+  <iframe src="https://nodejs.org" frameborder="1" name="iframe" width="300px"></iframe>
+  <div>
+    怎样&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这两个字之间空这么大呢？
+    <br>
+    怎样在页面中显示下面的内容呢？
+    <br>
+    &lt;span>&lt;/span>
+  </div>
 </body>
 </html>
