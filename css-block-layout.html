@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin:0;
+    }
+    .title {
+      background-color: black;
+      /* min-width: 500px; */
+      /* display: block; */
+    }
+
+    .title p {
+      width: 600px;
+      min-width: 500px;
+      margin: auto;
+      color: #fff;
+    }
+    .med{
+      margin-top:15px;
+      margin-bottom: 15px;
+    }
+    p,
+    .mid,
+    .bline {
+      width: 600px;
+      margin: auto;
+    }
+
+    .mid div {
+      width: 174px;
+      height: 34px;
+      margin-top: 15px;
+      border: 3px solid;
+      text-align: center;
+      line-height: 34px;
+      background-color: #FFC0CB;
+    }
+    .mid div:nth-child(3n+2) {
+      margin-left: 210px;
+      margin-top: -40px;
+    }
+
+    .mid div:nth-child(3n+3) {
+      margin-left: 420px;
+      margin-top: -40px;
+    }
+
+    .mid div:hover {
+      background-color: red;
+    }
+
+    .bline {
+      margin-top: 15px;
+    }
+
+    .bline div {
+      border-bottom: 1px dashed;
+    }
+
+    .bline div:last-child {
+      border-width: 0 0 0 0;
+    }
+
+    .footer {
+      background-color: #EE82EE;
+      min-width: 500px;
+    }
+
+    .footer div {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="title">
+    <p>hello world 请调整浏览器窗口大小查看效果</p>
+  </div>
+  <div class="med">
+    <p>
+      页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px
+      页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px
+      页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px
+      页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px
+      页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px
+      页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px
+    </p>
+    <div class="mid">
+      <div>宽180高40(包含边框)</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>水平间隙30px</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>垂直间隙15px</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>边框宽度3px</div>
+      <div>产品</div>
+      <div>产品</div>
+    </div>
+    <div class="bline">
+      <div>link</div>
+      <div>link</div>
+      <div>link</div>
+      <div>link</div>
+      <div>link</div>
+    </div>
+  </div>
+  <div class="footer">
+    <div>
+      <span>©版权所有</span><br>
+      本页所有布局均使用块元素</div>
+  </div>
+</body>
+
+</html>
