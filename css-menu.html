@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+   body{
+      margin:0;
+    }
+
+    div{
+      height:80px;
+      background-color: #d4e0e7;
+    }
+
+    ul{
+      padding: 0;
+      list-style:none;
+      position:absolute;
+    }
+    
+    ul.nav li:hover{
+      background-color: #ED9BA0;
+    }
+   
+    ul.nav li{
+      width:100px;
+      height:40px;
+      margin:3px;
+      color:#fff;
+      text-align:center;
+      line-height:40px;
+      white-space: nowrap;
+      background-color: rgba(0,0,255,0.35);
+      border:1px solid #fff;
+      box-shadow:8px 8px 6px 4px rgba(10,5,0,0.2);
+      position: relative;
+    } 
+    
+    ul.nav > li{
+      float: left;
+    }
+
+    ul.nav > li > ul{
+      top:100%;
+      left:-3px;
+    }
+
+    ul.nav > li > ul::before{
+      content:none;
+    }
+    
+    ul ul::before{
+      content:'>';
+      position: absolute;
+      left:-1em;
+    }
+
+    ul ul li{
+      opacity:0;
+      box-shadow:8px 8px 6px 4px rgba(10,5,0,0);
+      transition: opacity 0.6s;
+    }
+    ul.nav li:hover ul{
+      opacity: 1;
+      pointer-events: auto;
+    }
+    li:hover > ul > li{
+      opacity: 1;
+      pointer-events: auto;
+    }
+    ul ul{
+      width:100px;
+      left: 100%;
+      top: 0;
+      position:absolute; 
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <ul class="nav">
+      <li> 
+        home
+        <ul>
+          <li>
+            home
+            <ul>
+              <li>
+                dd
+                <ul>
+                  <li>hhv</li>
+                  <li>dttd</li>
+                  <li>dfddd</li>
+                </ul>
+              </li>
+              <li>dd</li>
+              <li>dd</li>
+            </ul>
+          </li>
+          <li>home</li>
+          <li>home</li>
+          <li>home</li>
+          <li>home</li>
+        </ul>
+      </li>
+      <li>
+         files 
+        <ul>
+          <li>
+            files 
+            <ul>
+                <li>dd</li>
+                <li>dd</li>
+                <li>dd</li>
+            </ul> 
+          </li>
+          <li>fileskinu</li>
+          <li>fileshepls</li>
+        </ul>
+      </li>
+      <li>
+        selector
+        <ul>
+          <li>hhv</li>
+          <li>dttd</li>
+          <li>dfddd</li>
+        </ul>
+      </li>
+      <li>
+        searchings
+        <ul>
+          <li>查找</li>
+          <li>搜索</li>
+          <li>查询</li>
+        </ul>
+      </li>
+      <li>
+        projects
+        <ul>
+          <li>项目</li>
+          <li>开发</li>
+          <li>dfddd</li>
+        </ul>
+      </li>
+      <li>helps</li>
+     </ul>
+</div>
+</body>
+</html>
