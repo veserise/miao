@@ -11,12 +11,14 @@
     }
     div{
       margin:auto;
-      width:450px;
+      width:200px;
     }
-    input{
-      display:none;
+    input:not(:checked), 
+    input:checked { 
+      position: absolute;
+      opacity: 0;
     }
-    input + label{
+    input + label {
       width:200px;
       height:100px;
       cursor:pointer;
@@ -26,37 +28,48 @@
       background-color: #DDDDDD;
       position:relative;
       box-shadow:0px 0px 0px 0px rgba(221,221,221,0.2);
+      background-image: linear-gradient(rgba(221,221,221,.4), transparent);
+      background-origin: border-box;
+      background-clip: border-box;
+      overflow: hidden;
+      transition-duration: .4s;
+      transition-property: padding, width;
     }
+    input + label::before{
+      content: '';
+      width:30px;
+      height:30px;
+      display:block;
+      background-color: #fff;
+      border-radius:30px;
+      position:relative;
+      top:2px;
+      left:2px;
+      background-image: linear-gradient(hsla(0,0%,100%,.3), hsla(0,0%,100%,0));
+      box-shadow: 0 0 .5em rgba(0,0,0,.3),
+	            0 .2em hsla(0,0%,100%,.2) inset,
+	            0 -.1em .3em hsla(0,0%,0%,.1) inset;
+      zoom:3;
+    }
+    
     input:checked + label{
+        padding-left: 35px;
+	      width: 165px;
         background-color: #6EDD5E;
         transition:background-color 1s;
     }
-
-    input + label .cricle{
-      width:30px;
-      height:30px;
-      display:inline-block;
-      background-color: #fff;
-      border-radius:30px;
-      position:absolute;
-      top:2px;
-      left:2px;
-      box-shadow:1px 1px 1px 1px rgba(193,193,193,0.7);
-      zoom:3;
-    }
-    input:checked + label .cricle{
-      cursor:pointer;
-      left: 35px;
+   
+    input:checked + label::before{
+      left: 23px;
       transition:left 1s;
     }
+   
   </style>
 </head>
 <body>
   <div>
       <input type="checkbox" name="" id="check">
-      <label class="tol" for="check">
-            <span class="cricle"></span>
-      </label>
+      <label class="tol" for="check"></label>
   </div>
 </body>
 </html>
