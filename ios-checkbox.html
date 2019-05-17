@@ -7,63 +7,77 @@
   <title>Document</title>
   <style>
     *{
-      background-color: ragb(0,0,0,0.05);
+      background-color: rgba(0,0,0,0.03);
     }
+
+    @keyframes zoomLarge{
+      0%{
+        width: 100px;
+        }
+      10%{
+        width: 130px;
+        transition:.2s;}
+      100%{
+        width: 100px;
+        transition:.00001s;}
+    }
+
     div{
       margin:auto;
       width:200px;
     }
+
     input:not(:checked), 
     input:checked { 
       position: absolute;
       opacity: 0;
     }
+
     input + label {
       width:200px;
       height:100px;
       cursor:pointer;
-      display: block;
+      display:inline-block;
       border:4px solid rgba(254,254,254,0.8);
       border-radius:104px;
       background-color: #DDDDDD;
       position:relative;
-      box-shadow:0px 0px 0px 0px rgba(221,221,221,0.2);
+      box-shadow: 0px 0px 0px 0px #c8fcd1 inset;
       background-image: linear-gradient(rgba(221,221,221,.4), transparent);
       background-origin: border-box;
       background-clip: border-box;
       overflow: hidden;
       transition-duration: .4s;
       transition-property: padding, width;
+      transition:1s;
     }
+
     input + label::before{
       content: '';
-      width:30px;
-      height:30px;
-      display:block;
-      background-color: #fff;
-      border-radius:30px;
+      top:1px;
+      width:98px;
+      height:98px;
+      border-radius:98px;
       position:relative;
-      top:2px;
-      left:2px;
+      display:inline-block;
+      background-color: #fff;
       background-image: linear-gradient(hsla(0,0%,100%,.3), hsla(0,0%,100%,0));
       box-shadow: 0 0 .5em rgba(0,0,0,.3),
-	            0 .2em hsla(0,0%,100%,.2) inset,
-	            0 -.1em .3em hsla(0,0%,0%,.1) inset;
-      zoom:3;
+        0 .2em hsla(0,0%,100%,.2) inset,
+        0 -.1em .3em hsla(0,0%,0%,.1) inset;
+      transition:1s;
     }
     
     input:checked + label{
-        padding-left: 35px;
-	      width: 165px;
-        background-color: #6EDD5E;
-        transition:background-color 1s;
+      width: 165px;
+      padding-left: 35px;
+      box-shadow: 0px 0px 0px 50px #6EDD5E inset;
     }
    
     input:checked + label::before{
-      left: 23px;
-      transition:left 1s;
+      left: 64px;
+      animation:zoomLarge 1s 1;
     }
-   
   </style>
 </head>
 <body>
