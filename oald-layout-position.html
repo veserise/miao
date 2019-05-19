@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html, body{
+      height: 100vh;
+      margin: 0;
+    }
+    .contain1, .contain3, .contain4{
+      width: 20%;
+      height: 100%;
+      float: left;
+      position: relative;
+      box-sizing:border-box;
+      border:1px solid #aaa;
+      background-color: #E9EDF2;
+      box-shadow:1px 0 5px 5px #ddd inset;  
+    }
+    
+    .contain2{
+      width: 40%;
+      height: 100%;
+      float: left;
+      position: relative;
+      box-sizing:border-box;
+      border:1px solid #aaa;
+      box-shadow:1px 0 5px 5px #ddd inset;  
+    }
+
+    h1{
+      width:100%;
+      text-align:right;
+      color:#666;
+      line-height:3;
+      padding-right: 3%;
+      box-sizing: border-box;
+      }
+
+    div.contain2 .title{
+      width:100%;
+      height:100px;
+      color:#666;
+      border-bottom: 5px solid #eee;
+      box-sizing: border-box;
+      line-height:100px;
+    }
+
+    p{
+      font-size:1em;
+      line-height:3;
+    }
+    
+    span{
+      font-size:24px;
+      color:rgb(207, 107, 107);
+    }
+
+    input{
+      width: 90%;
+      height: 25px;
+      color: #888;
+      font-size: .8em;
+      border-radius: 18px;
+    }
+
+    div.sroll{
+      width:100%;
+      height:82%;
+      overflow: auto;
+      position: relative;
+      border:none;
+    }
+    .sroller::-webkit-scrollbar{
+      width:5px;
+      height:100%;
+      border-radius:10px;
+      background-color: #ccc;
+    }
+    .sroller::-webkit-scrollbar-thumb{
+      border-radius:10px;
+      background-color: #eee;
+      border: 1px solid #bbb;
+      box-sizing: border-box;
+    }
+  
+    ul{
+      list-style:none;
+      text-align: left;
+    }
+    ul li{
+      width:100%;
+    }
+    ul li:hover{
+      background-color: #FFE8B9;
+    }
+    h3{
+      font-size:1.2em;
+      line-height: 2;
+      color: #55749D;
+    }
+  </style>
+</head>
+<body>
+<div class="contain1">
+  <h1>OALD Se7en</h1>
+  <input type="text" value="cat">
+  <div class="sroll sroller">
+    <ul>
+      <li><h3>cat</h3></li>
+      <li><h3>cat burglar</h3></li>
+      <li><h3>cat flap</h3></li>
+      <li><h3>cat's cradle</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat firs</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat list</h3></li>
+      <li><h3>cat list</h3></li>
+    </ul>
+  </div>
+</div>
+<div class="contain2">
+  <div class="title">
+    <span>cat</span>
+  </div>
+  <div class="sroll sroller">
+    <p>
+      Lorem ipsum dolor sit amet, 
+      consectetur adipisicing elit. <br>
+      Dicta excepturi non quibusdam vero 
+      expedita consequuntur
+      <span>quae sit nesciunt.</span> 
+      <em>Eum officia quas minus accusamus 
+        vitae sint,  exercitationem maiores</em>
+        quasi dolores nulla
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet,
+      consectetur adipisicing elit. 
+      Nulla natus tempore aliquam, 
+      quaerat porro mollitia voluptatem
+      veritatis consequatur nostrum 
+      ducimus. Repellendus cumque eius 
+      fugiat ea ratione alias est 
+      dignissimos eveniet.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, 
+        consectetur adipisicing elit. <br>
+        Dicta excepturi non quibusdam vero 
+        expedita consequuntur
+        <span>quae sit nesciunt.</span> 
+        <em>Eum officia quas minus accusamus 
+          vitae sint,  exercitationem maiores</em>
+          quasi dolores nulla
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. 
+        Nulla natus tempore aliquam, 
+        quaerat porro mollitia voluptatem
+        veritatis consequatur nostrum 
+        ducimus. Repellendus cumque eius 
+        fugiat ea ratione alias est 
+        dignissimos eveniet.
+      </p>
+      <p>
+          Lorem ipsum dolor sit amet, 
+          consectetur adipisicing elit. <br>
+          Dicta excepturi non quibusdam vero 
+          expedita consequuntur
+          <span>quae sit nesciunt.</span> 
+          <em>Eum officia quas minus accusamus 
+            vitae sint,  exercitationem maiores</em>
+            quasi dolores nulla
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet,
+          consectetur adipisicing elit. 
+          Nulla natus tempore aliquam, 
+          quaerat porro mollitia voluptatem
+          veritatis consequatur nostrum 
+          ducimus. Repellendus cumque eius 
+          fugiat ea ratione alias est 
+          dignissimos eveniet.
+        </p>
+  </div>
+</div>
+<div class="contain3">
+  <h1>Vocabulary</h1>
+  <input type="text" value="Search Vocabulary">
+  <div class="sroll sroller">
+    <ul>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+    </ul>
+  </div>
+</div>
+<div class="contain4">
+  <h1>History</h1>
+  <input type="text" value="Search Help">
+  <div class="sroll sroller">
+    <ul>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat firs</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+        <li><h3>cat list</h3></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

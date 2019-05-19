@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      margin:0;
+      font-size:12px;
+    }
+
+    ul{
+      cursor: pointer;
+      list-style:none;
+      margin:0px;
+      padding:0px;
+    }
+    a{
+      cursor: pointer;
+      text-decoration: none;
+      color: #674D24;
+    }
+    
+
+    header{
+      height:66px;
+    }
+    header div.logo{
+      left: 5px;
+      position: absolute;
+    }
+    header div.logo img{
+      cursor: pointer;
+      max-width: 215px;
+      height: 60px;
+      border: none;
+    }
+    header div.logo .left{
+      cursor: pointer;
+      margin-top: 1px;
+      float: right;
+      line-height:18px;
+    }
+    header div.logo .left p{
+      cursor: pointer;
+    }
+    header div.logo .left span{
+      cursor: pointer;
+      color: #674D24;
+    }
+
+
+    header div.right{
+      right: 10px;
+      position: absolute;
+    }
+    header div.right p{
+      text-align: right;
+      margin-top: 4px;
+    }
+    header div.right p span{
+      display: inline-block;
+      cursor: pointer;
+      width: 50px;
+      height: 15px;
+      line-height: 18px;
+      margin-bottom: -4px;
+      white-space: nowrap;
+    }
+    header div.right p span img{
+      max-width: 20px;
+      border: none;
+    }
+    header div.right div{
+      right:0;
+      width:236px;
+      top:30px;
+      position: absolute;
+    }
+    header div.right div input{
+      width:100px;
+      height:28px;
+      line-height: 18px;
+      border-width: 1px 0 1px 1px ;
+      position: absolute;
+      z-index: 4;
+    }
+    header div.right div select{
+      width: 235px;
+      height: 34px;
+      right: 0;
+      top: 1px;
+      z-index: 3;
+    }
+
+
+    div.menu{
+      width:180px;
+      left:10px;
+      box-sizing:border-box;
+      border:6px solid #FFB03A;
+      border-radius: 6px;
+      position:absolute;
+      height:calc(100% - 68px);
+    }
+
+    i img{
+      height:24px;
+      border: none;
+    }
+    
+    ul li:hover{
+      cursor:pointer;
+      background-color: #FCDBA2;
+    }
+
+    div.menu > ul:first-child{
+      width:179px;
+      height: 107px;
+      font-size: 14px;
+      box-sizing: border-box;
+      border-bottom:6px solid #FFB03A;
+      left:-6px;
+      position: absolute;
+    }
+    
+    div.menu > ul:first-child > li{
+      height:24px;
+      width:158px;
+      margin-top: 6px;
+      box-sizing: border-box;
+      padding-left:31px;
+    }
+    div.menu > ul:first-child > li a{
+      line-height:41px;
+    }
+    div.menu > ul:last-child{
+      width:170px;
+      top: 120px;
+      position: absolute;
+    }
+    div.menu > ul:last-child li{
+      height:22px;
+      padding-left:41px;
+      color:#4D391A;
+    }
+
+    div.content{
+      left:189px;
+      position:absolute;
+      box-sizing:border-box;
+      width:calc(100% - 190px);
+      height:calc(100% - 68px);
+      padding-left: 2%;
+      background-color: #FFF2DE;
+      border-top:6px solid #FFB03A;
+    }
+    div.content ul li{
+      width: 60px;
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+        <img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/logo/logo_4_01e9c5d.gif" alt="">
+        <div class="left">
+          <p><b>依恋</b><span>&lt;alice1005281785@qq.com&gt;</span></p>
+          <span><a href="#">邮箱首页</a> | 设置 - 换肤</span>
+        </div>
+    </div>
+    <div class="right">
+      <p>
+          <span><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4181360495,2202354723&fm=15&gp=0.jpg" alt=""></span>
+          <span><a href="#">反馈建议</a></span>
+          <span><a href="#">帮助中心</a></span>
+          <span><a href="#">退出</a></span>
+      </p>
+      <div>
+        <input type="text">
+        <select>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+          </select>
+      </div>
+    </div>
+  </header>
+  <div class="menu">
+    <ul>
+      <li><a href="#"><i><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558110645040&di=c28fee2ba5e2958519e35018959ad4f6&imgtype=0&src=http%3A%2F%2Fi1.excel99.com%2Fx4c07319c1bd8fd55d5f99aa913cb5299efef4bc2.jpg" alt=""></i><b>写信</b></a></li>
+      <li><a href="#"><i><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558110645040&di=c28fee2ba5e2958519e35018959ad4f6&imgtype=0&src=http%3A%2F%2Fi1.excel99.com%2Fx4c07319c1bd8fd55d5f99aa913cb5299efef4bc2.jpg" alt=""></i><b>收信</b></a></li>
+      <li><a href="#"><i><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558110645040&di=c28fee2ba5e2958519e35018959ad4f6&imgtype=0&src=http%3A%2F%2Fi1.excel99.com%2Fx4c07319c1bd8fd55d5f99aa913cb5299efef4bc2.jpg" alt=""></i><b>通讯录</b></a></li>
+    </ul>
+    <ul>
+      <li><a href="#"><b>收件箱</b></a></li>
+      <li><a href="#">星标邮件</a></li>
+      <li><a href="#">群邮件</a></li>
+      <li><a href="#">草稿箱</a></li>
+      <li><a href="#">已发送</a></li>
+      <li><a href="#">已删除</a></li>
+      <li><a href="#">垃圾箱</a></li>
+      <li><a href="#">QQ邮件订阅</a></li>
+      <hr>
+      <li><a href="#">我的文件夹</a></li>
+      <li><a href="#">其他邮箱</a></li>
+      <hr>
+      <li><a href="#">漂流瓶</a></li>
+      <li>
+        <span><a href="#">日历</a>&nbsp;&nbsp;&nbsp;</span> |
+        <span>&nbsp;&nbsp;&nbsp;<a href="#">记事本</a></span>
+      </li>
+      <li><a href="#">在线文档</a></li>
+      <li><a href="#">附件收藏</a></li>
+      <li><a href="#">文件中转站</a></li>
+      <li>
+        <span><a href="#">贺卡(新)</a>&nbsp;&nbsp;&nbsp;</span>|
+        <span>&nbsp;&nbsp;&nbsp;<a href="#">明信片</a></li>
+      <li><a href="#">阅读空间</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h1>依恋，你好，欢迎使用qq邮箱</h1>
+    <div>
+      <h3>邮件：<b>65</b>封未读邮件</h3>
+      <ul>
+        <li>收件箱</li>
+        <li>群邮件</li>
+        <li>订阅中心</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		p{
+		  width:300px;
+		  font-size:14px;
+		  line-height:20;
+		  text-align:center;
+		  background-color: blue;
+		}
+		p > span{
+		  display:inline-block;
+		  line-height:normal;
+		  background-color: red;
+		}
+		
+		div{
+		  width:300px;
+		  line-height:20;
+		  font-size:14px;
+		  position:relative;
+		  background-color: blue;
+		}
+
+		div > em{
+		  width: 20%;  
+		  height: 20%;  
+		  margin: auto;  
+		  position: absolute;  
+		  top: 0; 
+		  left: 0; 
+		  bottom: 0; 
+		  right: 0; 
+		  font-size:20px;
+		  text-align:center;
+		  line-height: normal;
+		  background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<p><span>span</span></p>
+	<div>
+		你好火速随我
+		<em>em</em>
+	</div>
+</body>
+</html>
