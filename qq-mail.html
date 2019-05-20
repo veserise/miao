@@ -6,22 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
+    /* 页面高度为100% */
     html, body{
-      height: 100vh;
-    }
-    body{
+      height: 100%;
       margin:0;
-      font-size:12px;
-    }
-    ul{
-      list-style-type: none;
-    }
-    a{
-      cursor: pointer;
-      text-decoration: none;
     }
 
+    /* head，页面头部 */
     header{
+      width: 100%;
       background-color: #FFCE71;
       height: 66px;
     }
@@ -37,14 +30,14 @@
       border: none;
     }
 
-    div.menu-content{
+    div.aside-main{
       width: 100%; 
       height: calc(100% - 66px);
       vertical-align:top;
       font-size: 0;
     }
-
-    div.menu{
+    /* 页面左边 */
+    div.aside{
       width:12%;
       height: 100%;
       font-size:12px;
@@ -55,8 +48,8 @@
       vertical-align:top;
       display: inline-block;
     }
-
-    div.content{
+    /* 页面右边 */
+    div.main{
       width:87.2%;
       height:100%;
       font-size:12px;
@@ -67,6 +60,13 @@
       box-sizing: border-box;
       background: #FFF2DE;
       display: inline-block;
+    }
+    ul{
+      list-style-type: none;
+    }
+    a{
+      cursor: pointer;
+      text-decoration: none;
     }
     p{
       width:73%;
@@ -85,9 +85,8 @@
         <img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/logo/logo_4_01e9c5d.gif" alt="">
     </div>
   </header>
-  <div class="menu-content">
-    <div class="menu">
-      
+  <div class="aside-main">
+    <div class="aside">
       <p><a href="#"><b>收件箱</b></a></p>
       <p><a href="#">星标邮件</a></p>
       <p><a href="#">群邮件</a></p>
@@ -97,16 +96,18 @@
       <p><a href="#">垃圾箱</a></p>
       <p><a href="#">QQ邮件订阅</a></p>
       <p><a href="#">漂流瓶</a></p>
-      <p><a href="#">日历</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">记事本</a>
+      <p>
+        <a href="#">日历</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">记事本</a>
       </p>
       <p><a href="#">在线文档</a></p>
       <p><a href="#">附件收藏</a></p>
       <p><a href="#">文件中转站</a></p>
-      <p><a href="#">贺卡(新)</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">明信片</a>
+      <p>
+        <a href="#">贺卡(新)</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">明信片</a>
       </p>
       <p><a href="#">阅读空间</a></p>
     </div>
-    <div class="content">
+    <div class="main">
       <h1>依恋，你好，欢迎使用qq邮箱</h1>
       <div>
         <h3>邮件：<b>65</b>封未读邮件</h3>

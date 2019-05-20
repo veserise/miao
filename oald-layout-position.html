@@ -7,7 +7,7 @@
   <title>Document</title>
   <style>
     html, body{
-      height: 100vh;
+      height: 100%;
       margin: 0;
     }
     .contain1, .contain3, .contain4{
@@ -31,6 +31,43 @@
       box-shadow:1px 0 5px 5px #ddd inset;  
     }
 
+    header .title{
+      width:100%;
+      color:#666;
+      padding-top: 18%;
+      border-bottom: 5px solid #eee;
+      box-sizing: border-box;
+    }
+
+    div.contain2 .conntent{
+      top:0;
+      bottom: 0;
+      width: 100%;
+      margin-top: 18%; 
+      position: absolute;
+    }
+
+    div.sroll{
+      width:100%;
+      height:82%;
+      overflow: auto;
+      position: relative;
+      border:none;
+    }
+    /* 滚动条设置条框及里面的滚动条 */
+    .sroller::-webkit-scrollbar{
+      width:5px;
+      height:100%;
+      border-radius:10px;
+      background-color: #ccc;
+    }
+
+    .sroller::-webkit-scrollbar-thumb{
+      border-radius:10px;
+      background-color: #eee;
+      border: 1px solid #bbb;
+      box-sizing: border-box;
+    }
     h1{
       width:100%;
       text-align:right;
@@ -38,15 +75,6 @@
       line-height:3;
       padding-right: 3%;
       box-sizing: border-box;
-      }
-
-    div.contain2 .title{
-      width:100%;
-      height:100px;
-      color:#666;
-      border-bottom: 5px solid #eee;
-      box-sizing: border-box;
-      line-height:100px;
     }
 
     p{
@@ -67,36 +95,19 @@
       border-radius: 18px;
     }
 
-    div.sroll{
-      width:100%;
-      height:82%;
-      overflow: auto;
-      position: relative;
-      border:none;
-    }
-    .sroller::-webkit-scrollbar{
-      width:5px;
-      height:100%;
-      border-radius:10px;
-      background-color: #ccc;
-    }
-    .sroller::-webkit-scrollbar-thumb{
-      border-radius:10px;
-      background-color: #eee;
-      border: 1px solid #bbb;
-      box-sizing: border-box;
-    }
-  
     ul{
       list-style:none;
       text-align: left;
     }
+
     ul li{
       width:100%;
     }
+
     ul li:hover{
       background-color: #FFE8B9;
     }
+
     h3{
       font-size:1.2em;
       line-height: 2;
@@ -154,10 +165,10 @@
   </div>
 </div>
 <div class="contain2">
-  <div class="title">
-    <span>cat</span>
-  </div>
-  <div class="sroll sroller">
+  <header>
+      <div class="title">cat</div>
+  </header>
+  <div class="conntent">
     <p>
       Lorem ipsum dolor sit amet, 
       consectetur adipisicing elit. <br>

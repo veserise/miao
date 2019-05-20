@@ -6,79 +6,131 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-      .slider{
-        width:300px;
-        height:400px;
-        margin:auto;
-        font-size:15px;
-        position:relative;
-        box-shadow:2px 2px 2px 2px rgba(206,206,222,0.8);
-      }
-      header{
-        width:100%;
-        text-align:center;
-        line-height:40px;
-      }
-      .indicators{
-        position:absolute;
-        width:300px;
-        height:320px;
-        top:40px;
-        background-color: #EDEDED;
-      }
-      .slider img{
-        max-width:300px;
-        position: absolute;
-        padding-top: 35%;
-        transition: 1s;
-        display:none;
-        box-shadow:1px 1px 1px 1px rgba(206,206,222,0.8);
-      }
-      .slider input{
-        display:none;
-      }
-      .slider .indicators label{
-        display:inline-block;
-        width:5px;
-        height:5px;
-        border:2px solid;
-        border-radius:10px;
-        position:relative;
-        top:330px;
-        left:120px;
-        cursor:pointer;
-      }
-      .slider input:checked + img {
-        display:block;
-      }
-      /* .indicators::before{
-        content:' < ';
-        width:15px;
-        height:30px;
-        top:160px;
-        position:relative;
-        display: table;
-        cursor:pointer;
-        color:#fff;
-        background-color: #C6C6C6;
-      }
-      .indicators::after{
-        content:' > ';
-        width:15px;
-        height:30px;
-        display: table;
-        color:#fff;
-        left:290px;
-        top:112px;
-        cursor:pointer;
-        position:relative;
-        background-color: #C6C6C6;
-      } */
-    </style>
+    .box{
+      width:300px;
+      height:400px;
+      margin:auto;
+      font-size:15px;
+      position:relative;
+      box-shadow:2px 2px 2px 2px rgba(206,206,222,0.8);
+    }
+
+    header{
+      width:100%;
+      text-align:center;
+      line-height:40px;
+    }
+
+    .slider{
+      width:300px;
+      height:360px;
+      line-height: 360px;
+      text-align: center;
+      position: relative;
+      background-color: #EDEDED;
+    }
+    .slider img{
+      max-width:100%;
+      max-height: 100%;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      top: 0;
+      margin: auto;
+      position: absolute;
+      transition: 1s;
+      display:none;
+    }
+    .slider input{
+      display:none;
+    }
+
+    .indicators{
+      height:40px;
+      top: 320px;
+      width: 100%;
+      position: absolute;
+      line-height: 40px;
+      background-color: #fff;
+    }
+    .slider .indicators label{
+      width:5px;
+      height:5px;
+      border:2px solid;
+      border-radius:10px;
+      position:relative;
+      cursor:pointer;
+      display:inline-block;
+    }
+    .slider .indicators-left{
+      width: 28px;
+      position: relative;
+      z-index: 4;
+    }
+    .slider .indicators-left label{
+      width:5px;
+      height:5px;
+      border:2px solid;
+      border-color: rgb(252, 244, 136);
+      border-radius:10px;
+      position:relative;
+      margin-left: 1px;
+      cursor:pointer;
+    }
+    .slider .indicators-right{
+      width: 28px;
+      left: 274px;
+      top:-360px;
+      position: relative;
+      z-index: 4;
+    }
+    .slider .indicators-right label{
+      width:5px;
+      height:5px;
+      border:2px solid;
+      border-radius:10px;
+      position:relative;
+      margin-left: 1px;
+      cursor:pointer;
+      border-color: rgb(252, 244, 136);
+    }
+    .slider input:checked + img {
+      display:block;
+    }
+    .slider input:nth-child(1):checked ~ div.indicators label:nth-child(1),
+    .slider input:nth-child(2):checked ~ div.indicators label:nth-child(2),
+    .slider input:nth-child(3):checked ~ div.indicators label:nth-child(3),
+    .slider input:nth-child(4):checked ~ div.indicators label:nth-child(4),
+    .slider input:nth-child(5):checked ~ div.indicators label:nth-child(5),
+    .slider input:nth-child(1):checked ~ div.indicators-left label:nth-child(1),
+    .slider input:nth-child(2):checked ~ div.indicators-left label:nth-child(2),
+    .slider input:nth-child(3):checked ~ div.indicators-left label:nth-child(3),
+    .slider input:nth-child(4):checked ~ div.indicators-left label:nth-child(4),
+    .slider input:nth-child(5):checked ~ div.indicators-left label:nth-child(5),
+    .slider input:nth-child(1):checked ~ div.indicators-right label:nth-child(1),
+    .slider input:nth-child(2):checked ~ div.indicators-right label:nth-child(2),
+    .slider input:nth-child(3):checked ~ div.indicators-right label:nth-child(3),
+    .slider input:nth-child(4):checked ~ div.indicators-right label:nth-child(4),
+    .slider input:nth-child(5):checked ~ div.indicators-right label:nth-child(5)
+    {
+      border-color: red;
+    }
+  </style>
 </head>
 <body>
+<div class="box">
+  <header>图 片</header>
   <div class="slider">
-      <header>图 片</header>
+      <input type="radio" id="icon-1" checked name="check">
+      <img src="http://attachments.gfan.com/forum/201710/27/231330dvcw5cg645378u8y.jpg" alt="">
+      <input type="radio" id="icon-2" name="check">
+      <img src="http://img5.imgtn.bdimg.com/it/u=1141876679,553537266&fm=26&gp=0.jpg" alt="">
+      <input type="radio" id="icon-3" name="check">
+      <img src="http://seopic.699pic.com/photo/40007/1281.jpg_wh1200.jpg" alt="">
+      <input type="radio" id="icon-4" name="check">
+      <img src="http://seopic.699pic.com/photo/40007/4969.jpg_wh1200.jpg" alt="">
+      <input type="radio" id="icon-5" name="check">
+      <img src="http://seopic.699pic.com/photo/40012/2401.jpg_wh1200.jpg" alt="">
       <div class="indicators">
         <label for="icon-1"></label>
         <label for="icon-2"></label>
@@ -86,16 +138,20 @@
         <label for="icon-4"></label>
         <label for="icon-5"></label>
       </div>
-      <input type="radio" id="icon-1" checked name="check">
-      <img src="http://seopic.699pic.com/photo/40012/2401.jpg_wh1200.jpg" alt="">
-      <input type="radio" id="icon-2" name="check">
-      <img src="http://seopic.699pic.com/photo/40008/3468.jpg_wh1200.jpg" alt="">
-      <input type="radio" id="icon-3" name="check">
-      <img src="http://seopic.699pic.com/photo/40007/1281.jpg_wh1200.jpg" alt="">
-      <input type="radio" id="icon-4" name="check">
-        <img src="http://seopic.699pic.com/photo/40007/4969.jpg_wh1200.jpg" alt="">
-      <input type="radio" id="icon-5" name="check">
-      <img src="http://seopic.699pic.com/photo/40007/4870.jpg_wh1200.jpg" alt="">
+      <div class="indicators-left">
+          <label for="icon-1"></label>
+          <label for="icon-2"></label>
+          <label for="icon-3"></label>
+          <label for="icon-4"></label>
+          <label for="icon-5"></label>
+        </div>
+      <div class="indicators-right">
+          <label for="icon-1"></label>
+          <label for="icon-2"></label>
+          <label for="icon-3"></label>
+          <label for="icon-4"></label>
+          <label for="icon-5"></label>
+        </div>
     </div>
 </body>
 </html>
