@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style></style>
+  <style type="text/less">
+    .table{
+      display: table;
+      width: 500px;
+      font-size: 14px;
+      margin: auto;
+      box-sizing: border-box;
+      table-layout: auto;
+      text-align: left;
+      border-collapse: collapse;
+
+      tr{
+        height: 50px;
+        width:500px;
+        border-top:1px solid #eee;
+      }
+      th, td{
+        padding-left:10px;
+      }
+      /* table的左边第一竖条 */
+      .row{
+        padding-left:10px;
+        width:60px;
+      }
+      /* table的---背景为黑颜色 */
+      &.table-dark{
+        color: #fff;
+        border-color:#454D55;
+        background-color: #343a40;
+        tr, th, td{
+          border-color: #454D55; 
+        }
+      }
+      /* table的head栏---背景为黑颜色 */
+      > .thead-dark{
+        color:#fff;
+        background-color: #343A40;
+      }
+      /* table的head栏 ---背景为浅颜色*/
+      > .thead-light{
+        background-color: #E9ECEF;
+      }
+      /* table表格条间隔颜色变化 */
+      &.table-striped{
+        tbody tr:nth-child(2n+1){
+          background-color:#F2F2F2;
+        }
+      }
+      /* table边框线 */
+      &.table-bordered{
+        tr{
+          border:1px solid #454D55;
+        }
+        th, td{
+          border:1px solid #454D55;
+        }
+      }
+      /* 无边框线 */
+      &.table-borderless{
+        border:none;
+        th, tr, td{
+          border:none;
+        }
+      }
+      /* 鼠标经过 */
+      &.table-hover{
+        tbody tr:hover{
+          background-color:#F2F2F2;
+        }
+      }
+      /* table表单缩小 */
+      &.table-sm{
+        tr{
+          height:30px;
+        }
+      }
+      /* 标题 */
+      caption{
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+        color: #6c757d;
+        text-align: left;
+        caption-side: bottom;
+      }
+    }
+  </style>
+</head>
+<body>
+<table class="table">
+  <caption>caption</caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First</th>
+      <th>Last</th>
+      <th>Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th class="row">2</th>
+      <td>acob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th class="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+<script src="less.min.js"></script>
+</body>
+</html>

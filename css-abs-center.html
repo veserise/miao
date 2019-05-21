@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div{
+      width:300px;
+      height:300px;
+      background-color: #ddd;
+    }
+
+    span{
+      background-color: red;
+    }
+    /*居中--- display为表格 */
+    .center-table{
+      display:table-cell;
+      vertical-align:middle;      /* 垂直方向为middle */
+      text-align:center;         /* 水平方向为center */
+    }   
+    /* 居中---，display为inline-block */
+    .center-inlineblock{
+      display:inline-block;
+      line-height:300px;
+      text-align:center;
+    }
+    /* 居中---，定位 */
+    .center-position{
+      text-align:center;
+      position:relative;
+    }
+    
+    .imk{
+      width:40%;
+      height:10%;
+      left:0px;
+      right:0px;
+      top:0px;
+      bottom:0px;
+      margin:auto;
+      position:absolute;
+    }
+  </style>
+</head>
+<body>
+  <div class="center-table">
+    <span>center-table</span>
+  </div>
+  <br>
+  <div class="center-inlineblock">
+    <span>center-inlineblock</span>
+  </div>
+  <br>
+    <br>
+  <div class="center-position">
+    <span class="imk">center-position</span>
+  </div>
+</body>
+</html>
