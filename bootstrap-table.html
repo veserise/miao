@@ -21,38 +21,45 @@
         height: 50px;
         border-top:1px solid #eee;
       }
+      
       th, td{
         padding-left:10px;
       }
+
       /* table的左边第一竖条 */
       .row{
         padding-left:10px;
         width:60px;
       }
+
       /* table的---背景为黑颜色 */
       &.table-dark{
         color: #fff;
-        /* border-color:#454D55; */
+        border-color:#454D55;
         background-color: #343a40;
         tr, th, td{
           border-color: #454D55; 
         }
       }
+
       /* table的head栏---背景为黑颜色 */
       > .thead-dark{
         color:#fff;
         background-color: #343A40;
       }
+
       /* table的head栏 ---背景为浅颜色*/
       > .thead-light{
         background-color: #E9ECEF;
       }
+
       /* table表格条间隔颜色变化 */
       &.table-striped{
         tbody tr:nth-child(2n+1){
           background-color:#F2F2F2;
         }
       }
+
       /* table边框线 */
       &.table-bordered{
         tr{
@@ -62,6 +69,7 @@
           border:1px solid #454D55;
         }
       }
+
       /* 无边框线 */
       &.table-borderless{
         border:none;
@@ -69,18 +77,21 @@
           border:none;
         }
       }
+
       /* 鼠标经过 */
       &.table-hover{
         tbody tr:hover{
           background-color:#F2F2F2;
         }
       }
+
       /* table表单缩小 */
       &.table-sm{
         tr{
           height:30px;
         }
       }
+
       /* 标题 */
       caption{
         padding-top: .75rem;
