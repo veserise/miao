@@ -8,12 +8,10 @@
   <style></style>
   <style type="text/less">
     .table{
-      display: table;
       width: 500px;
       font-size: 14px;
       margin: auto;
       box-sizing: border-box;
-      table-layout: auto;
       text-align: left;
       border-collapse: collapse;
 
@@ -21,7 +19,7 @@
         height: 50px;
         border-top:1px solid #eee;
       }
-      
+
       th, td{
         padding-left:10px;
       }
@@ -101,40 +99,48 @@
         caption-side: bottom;
       }
     }
+    .respansove{
+      width: 600px;
+      height: 200px;
+      margin: auto;
+      overflow-y: scroll;
+    }
   </style>
 </head>
 <body>
-<table class="table">
-  <caption>caption</caption>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First</th>
-      <th>Last</th>
-      <th>Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th class="row">2</th>
-      <td>acob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th class="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="respansove">
+  <table class="table">
+      <caption>caption</caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First</th>
+          <th>Last</th>
+          <th>Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th class="row">2</th>
+          <td>acob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th class="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+  </table>
+</div>
 <script src="less.min.js"></script>
 </body>
 </html>
