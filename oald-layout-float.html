@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body, html{
+		  height:100%;
+		  margin:0;
+		  font-size:14px;
+		}
+
+		.aside{
+		  width:20%;
+		  height:100%;
+		  float:left;
+		  border:1px solid #ddd;
+		  box-sizing:border-box;
+		  background-color: #F0AF52;
+		}
+		.two{
+		  float:left;
+		  width:40%;
+		  height:100%;
+		  background-color: pink;
+		}
+
+		.head{
+			margin-top: -15%;
+		  	display:block;
+		}
+
+		ul{
+		  padding:0;
+		  margin:0;
+		  list-style:none;
+		}
+
+		li{
+		  float:left;
+		  height:30px;
+		  font-size:12px;
+		}
+
+		ul.title{
+		  width:100%;
+		  float:left;
+		  display:block;
+		  padding-top: 15%;
+		  border:1px solid #ddd;
+		  box-sizing:border-box;
+		  background-color: #ddd;
+		}
+
+		ul.title::after{
+		  content:'';
+		  display:block;
+		  clear:both;
+		}
+
+		ul.title > li{
+		  width:45%;
+		}
+
+		ul.button{
+			margin-top: -15%;
+		   	float:right;
+		   	display:block;
+			text-align: right;
+		}
+		ul.button li{
+			border:1px solid #ddd;
+		}
+		.content{
+		  float:left;
+		  min-width:200px;
+		  width:100%;
+		  height:84%;
+		  display: block;
+		  background-color:red;
+		}
+	</style>
+</head>
+<body>
+<div class="aside">head</div>
+<div class="two">
+  <ul class="title">
+    <li>
+        <span class="head">cat</span>
+    </li>
+    <li>
+      <ul class="button">
+        <li>Tools</li>
+        <li>Setting</li>
+        <li>Help</li>
+        <li>Donate</li>
+      </ul>
+    </li>
+  </ul>
+  <span class="content">
+    Lorem ipsum dolor sit amet, 
+    consectetur adipisicing elit.
+    Temporibus tempora beatae ea 
+    veritatis quaerat, aut 
+    necessitatibus autem 
+    aspernatur dolorum pariatur
+    voluptatum blanditiis, 
+    facere doloremque quam fugiat! Sit commodi, nobis repudiandae!
+  </span>
+</div>
+<div class="aside">content</div>
+<div class="aside">content</div>	
+</body>
+</html>

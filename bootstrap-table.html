@@ -80,6 +80,7 @@
       &.table-hover{
         tbody tr:hover{
           background-color:#F2F2F2;
+          transition: 1s;
         }
       }
 
@@ -98,47 +99,166 @@
         text-align: left;
         caption-side: bottom;
       }
+
+      /*每一行的背景颜色*/
+      .table-active{
+        background-color: #DADADA;
+      }
+
+      .table-primary{
+        background-color: #B8DAFF;
+      }
+
+      .table-secondary{
+        background-color: #D6D8DB;
+      }
+
+      .table-success{
+        background-color: #C3E6CB;
+      }
+
+      .table-danger{
+        background-color: #F5C6CB;
+      }
+
+      .table-warning{
+        background-color: #FFEEBA;
+      }
+
+      .table-info{
+        background-color: #BEE5EB;
+      }
+
+      .table-light{
+        background-color: #FDFDFE;
+      }
+
+      .table-dark{
+        background-color: #C6C8CA;
+      }
+
+      .bg-primary{
+        background-color: #C6C8CA;
+      }
+
+       .bg-success{
+        background-color: #28A745;
+      }
+
+       .bg-danger{
+        background-color: #DC3545;
+      }
+
+       .bg-warning{
+        background-color: #FFC107;
+      }
+
+       .bg-info{
+        background-color: #17A2B8;
+      }
     }
-    .respansove{
+    .table-responsive {
       width: 600px;
-      height: 200px;
+      height: 400px;
       margin: auto;
       overflow-y: scroll;
     }
   </style>
 </head>
 <body>
-<div class="respansove">
+<table class="table">
+    <caption>caption</caption>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First</th>
+        <th>Last</th>
+        <th>Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th class="row">2</th>
+        <td>acob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th class="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+</table>
+<br><br><br>
+<div class="table-responsive">
   <table class="table">
-      <caption>caption</caption>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First</th>
-          <th>Last</th>
-          <th>Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th class="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th class="row">2</th>
-          <td>acob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th class="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Heading</th>
+        <th>Heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-active">
+        <th>Active</th>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr>
+        <th>Default</th>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr class="table-primary">
+        <th>Primary</th>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr class="table-secondary">
+        <th>Secondary</th>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr class="table-success">
+        <th>Success</th>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr class="table-danger">
+        <th>Danger</th>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr class="table-warning">
+        <th>Warning</th>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr class="table-info">
+        <th>Info</th>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr class="table-light">
+        <th>Light</th>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr class="table-dark">
+        <th>Dark</th>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+    </tbody>
   </table>
 </div>
 <script src="less.min.js"></script>
