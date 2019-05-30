@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+		  margin:0;
+		}
+		body{
+		  width:100vw;
+		  overflow: hidden;
+		}
+		section{
+			height:100vh;
+		  display:flex;
+		  overflow: hidden;
+		  margin-right:-4px;
+		  padding: 2px;
+		  background-color: lime;
+		}
+		div{
+		  flex-basis:20vw; 
+		  border-right:2px solid #fff;
+		  box-sizing:border-box;
+		}
+		div:nth-child(2){
+			flex-basis:40vw; 
+		  display:flex;
+		  flex-direction:column;
+		}
+		div:nth-child(2) div:nth-child(1){
+		  max-height: 150px;
+		  border-right: none;
+		}
+		div:nth-child(2) div:nth-child(2){
+		  flex-grow:1;
+		  border-top:2px solid #fff;
+		  border-right: none;
+		}
+	</style>
+</head>
+<body>
+<section>
+  <div></div>
+  <div>
+      <div></div>
+      <div></div>
+  </div>
+  <div></div>
+  <div></div>
+</section>	
+</body>
+</html>

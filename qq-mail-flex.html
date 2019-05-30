@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+		}
+		section{
+		  width:100vw;
+		  height:100vh;
+		  display:flex;
+		  flex-direction:column;
+		  background-color: pink;
+		}
+		header{
+		  flex-grow:2;
+		  max-height:100px;
+		  background-color: lime;
+		}
+		div{
+		   flex-grow:8;
+		   display:flex;
+		}
+		aside{
+		   	width:180px;
+		    border:3px solid red;
+		    box-sizing:border-box;
+		    background-color: #f3f3;
+		}
+		main{
+		 	flex-grow:1;
+		    border-top:3px solid red;
+		    box-sizing:border-box;
+		  	background-color: #fd4;
+		}
+	</style>
+</head>
+<body>
+<section>
+  <header></header>
+  <div>
+    <aside></aside>
+    <main></main>
+  </div>
+</section>	
+</body>
+</html>
