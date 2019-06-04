@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正六面体</title>
+	<style>
+
+		/*父元素*/
+		div{
+		  width:400px;
+		  height:400px;
+		  margin:auto;
+		  margin-top:100px;
+		  position: relative;
+		  background-color: rgba(0,0,0,0.2);
+		  transform-origin:200px,200px;
+		  transform-style: preserve-3d;
+		  transform:rotatex(70deg) rotatey(70deg) rotatez(70deg);
+		  transition:10s;
+		}
+
+		div:hover{
+		   transform: rotatex(360deg) rotatey(360deg) rotatez(360deg);
+		}
+
+		/*子元素*/
+		span{
+		  width:200px;
+		  height:200px;
+		  font-size:80px;
+		  text-align:center;
+		  line-height:200px;
+		  display:block;
+		  position:relative;
+		  transform-origin:200px,200px;
+		  opacity:0.5;
+		  backface-visibility:visible;
+		  transform:translate(100px,100px);
+		}
+		/* 前 */
+		span:nth-child(1){
+		  transform:translate(100px,0px)  rotatex(-90deg);
+		  background-color: lime;
+
+		}
+		/* 后 */
+		span:nth-child(2){
+		   transform:translate(100px,0px)  rotatex(-90deg);
+		   background-color: red;
+		}
+		/* 左 */
+		span:nth-child(3){
+		  transform:translate(200px,-300px)  rotatey(90deg);
+		  background-color: #4ff;
+		}
+		/* 右 */
+		span:nth-child(4){
+		  transform:translate(0px,-500px)  rotatey(90deg);
+		  background-color: tan;
+		}
+		/* 上 */
+		span:nth-child(5){
+		 transform:translate(99px,-700px) translatez(100px);
+		  background-color: #f3f;
+		}
+		/* 下 */
+		span:nth-child(6){
+		  transform:translate(99px,-900px) translatez(-100px);
+		  background-color: #ff4;
+		}
+	</style>
+</head>
+<body>
+<div>
+	<span>1</span>
+	<span>2</span>
+	<span>3</span>
+	<span>4</span>
+	<span>5</span>
+	<span>6</span>
+</div>	
+</body>
+</html>
