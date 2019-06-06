@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+		  background-color: rgba(0,0,0,0.08);
+		}
+		section{
+		  width:500px;
+		  height:500px;
+		  margin: auto;
+		  position:relative;
+		  animation:nump 5s infinite ease-in-out;
+		}
+		div{
+		  width:100px;
+		  height:100px;
+		  margin:auto;
+		  font-size: 60px;
+		  text-align: center;
+		  line-height: 100px;
+		  position:absolute;
+		  border-radius:100px;
+		  background-color: yellow;
+		  transition:5s;
+		  transform-origin: 150px,150px;
+		  animation:nump-reserve 5s infinite ease-in-out ;
+		}
+		@keyframes nump{
+			0%{
+			}
+			100%{
+			transform: rotate(360deg);
+			}
+		}
+		@keyframes nump-reserve{
+			0%{
+			}
+			100%{
+			transform: rotate(-360deg);
+			}
+		}
+		strong {
+		  position: relative;
+		  width: 100px;
+		  height: 100px;
+		  display: inline-block;
+		  margin: 250px;
+		  background-color: red;
+		  font-size: 50px;
+		  line-height: 100px;
+		  border-radius:100px;
+		  background-color: yellow;
+		  text-align: center;
+		  animation: h infinite 3s alternate cubic-bezier(.36,0,.64,1), v infinite 3s -1.5s alternate cubic-bezier(.36,0,.64,1);
+		}
+		@keyframes h {
+		  from {
+		    transform: translatex(-150px);
+		  }
+		  to {
+		    transform: translatex(150px);
+		  }
+		}
+
+		@keyframes v {
+		  from {
+		    top: 150px;
+		  }
+		  to {
+		    top: -150px;
+		  }
+		  
+		}
+
+
+		span {
+		  width: 100px;
+		  height: 100px;
+		  display: inline-block;
+		  margin: 150px;
+		  font-size: 40px;
+		  text-align: center;
+		  line-height: 100px;
+		  border-radius:100px;
+		  background-color: yellow;
+		  animation: rotate 6s infinite linear;
+		  background-color: red;
+		}
+
+		@keyframes rotate {
+		  from {
+		    transform: rotate(0deg) translate(100px) rotate(-0deg);
+		  }
+		  to {
+		    
+		  transform: rotate(360deg) translate(100px) rotate(-360deg);
+		  }
+		}
+	</style>
+</head>
+<body>
+  <section><div>s</div></section>	
+  <strong>s</strong>
+  <span>s</span>
+  <script>
+  	setInterval(() => {
+		var el = document.querySelector('strong')
+		var pos = el.getBoundingClientRect()
+		var dot = document.createElement('i')
+		dot.style.left = pos.left + 'px'
+		dot.style.top = pos.top + 'px'
+		dot.style.width = '2px'
+		dot.style.height = '2px'
+		dot.style.position = 'fixed'
+		dot.style.background = 'red'
+		document.body.appendChild(dot)
+		}, 10)
+  </script>
+</body>
+</html>
