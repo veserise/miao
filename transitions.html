@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	section{
+	  width:600px;
+	  height:500px;
+	  text-align: center;
+	  position: relative;
+	}
+	div{
+		top:50px;
+		width:100px;
+		height:100px;
+		margin:10px;
+		line-height:100px;
+		border-radius: 100px;
+		background-color: lime;
+		float: left;
+		position: relative;
+	}
+	div:nth-child(1):hover{
+		background-image:linear-gradient(to right,lime,red);
+		 animation:bounce 1s 1;
+	}
+	div:nth-child(2):hover{
+		background-image:linear-gradient(to right,#f3f,yellow);
+		 animation:flash 1s 1;
+	}
+	div:nth-child(3):hover{
+		background-image:linear-gradient(to right,pink,green);
+		 animation:swing 1s 1;
+	}
+	div:nth-child(4):hover{
+		background-image:linear-gradient(to right,yellow,red);
+		 animation:tada 1s 1;
+	}
+	div:nth-child(5):hover{
+		background-image:linear-gradient(to right,yellow,red);
+		 animation:fadeInUp 1s 1;
+	}
+	@keyframes bounce{
+      0%{
+        top:50px;
+      }
+      40%{
+      	top:20px;
+      }
+      80%{
+		    top:50px;
+      }
+      90%{
+      	top:45px;
+      }
+      100%{
+        top:50px;
+      }
+    }
+    @keyframes flash{
+      0%{
+       opacity: 1;
+      }
+      40%{
+      	opacity: 0;
+      }
+      80%{
+		opacity: 1;
+      }
+      90%{
+      	opacity: 0;
+      }
+      100%{
+        opacity: 1;
+      }
+    }
+    @keyframes swing{
+      0%{
+        transform: rotateZ(0deg);
+      }
+      20%{
+      	transform: rotateZ(45deg);
+     }
+     40%{
+      	transform: rotateZ(0deg);
+     }
+     60%{
+		transform: rotateZ(30deg);
+      }
+      80%{
+      	transform:rotateZ(0deg);
+      }
+      100%{
+        transform: rotateZ(0deg);
+      }
+    }
+    @keyframes tada{
+      0%{
+        transform: rotateZ(0deg);
+      }
+      20%{
+      	transform:perspective(1000px) rotateZ(45deg);
+      }
+      40%{
+      	transform:perspective(800px)  rotateZ(0deg);
+      }
+      60%{
+		    transform:perspective(600px)  rotateZ(30deg);
+      }
+      80%{
+      	transform:perspective(400px) rotateZ(0deg);
+      }
+      90%{
+      	transform:perspective(200px) rotateZ(10deg);
+      }
+      100%{
+        transform: rotateZ(0deg);
+      }
+    }
+    @keyframes fadeInUp{
+      0%{
+        opacity: 0;
+        top:100px;
+      }
+      100%{
+        opacity: 1;
+        top:50px;
+      }
+    }
+	</style>
+</head>
+<body>
+<section>
+	<div>bounce</div>
+	<div>flash</div>
+	<div>swing</div>
+	<div>tada</div>
+	<div>fadeInUp</div>
+</section>
+</body>
+</html>

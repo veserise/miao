@@ -16,7 +16,7 @@
 		  transform-origin:200px,200px;
 		  transform-style: preserve-3d;
 		  transform:rotatex(70deg) rotatey(70deg) rotatez(70deg);
-		  transition:10s;
+		  transition:5s;
 		}
 
 		div:hover{
@@ -31,42 +31,43 @@
 		  text-align:center;
 		  line-height:200px;
 		  display:block;
+		  background-blend-mode: screen;
 		  position:relative;
 		  transform-origin:200px,200px;
-		  opacity:0.5;
+		  /*opacity:0.5;*/
 		  backface-visibility:visible;
 		  transform:translate(100px,100px);
 		}
 		/* 前 */
 		span:nth-child(1){
-		  transform:translate(100px,0px)  rotatex(-90deg);
-		  background-color: lime;
+		  transform:translate(100px,0px) rotatex(-90deg);
+		  background-image: linear-gradient(to right,red,blue),linear-gradient(to bottom,green,yellow);
 
 		}
 		/* 后 */
 		span:nth-child(2){
 		   transform:translate(100px,0px)  rotatex(-90deg);
-		   background-color: red;
+		   background-image: linear-gradient(to right,red,yellow),linear-gradient(to bottom,blue,green);
 		}
 		/* 左 */
 		span:nth-child(3){
 		  transform:translate(200px,-300px)  rotatey(90deg);
-		  background-color: #4ff;
+		   background-image: linear-gradient(to right,green,red),linear-gradient(to bottom,blue,yellow);
 		}
 		/* 右 */
 		span:nth-child(4){
 		  transform:translate(0px,-500px)  rotatey(90deg);
-		  background-color: tan;
+		  background-image: linear-gradient(to right,green,red),linear-gradient(to bottom,blue,yellow);
 		}
 		/* 上 */
 		span:nth-child(5){
 		 transform:translate(99px,-700px) translatez(100px);
-		  background-color: #f3f;
+		  background-image: linear-gradient(to right,yellow,blue),linear-gradient(to bottom,green,red);
 		}
 		/* 下 */
 		span:nth-child(6){
 		  transform:translate(99px,-900px) translatez(-100px);
-		  background-color: #ff4;
+		  background-image: linear-gradient(to right,blue,green),linear-gradient(to bottom,yellow,red);
 		}
 	</style>
 </head>
