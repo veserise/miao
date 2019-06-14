@@ -21,11 +21,11 @@
 	}
 </script>
 <script type="x" id="ch0103/04">
-	var a = Number(prompt("请输入整数：a"))
-	var b = Number(prompt("请输入整数：b"))
+	var a = prompt("请输入整数：a") | 0
+	var b = prompt("请输入整数：b") | 0
 
-	console.log(a/b)
-	console.log(a%b)
+	console.log((a - (a % b))/b)
+	console.log(a % b)
 </script>
 <script type="x" id="ch0103/05">
 	var a = Number(prompt("请输入整数：a"))
@@ -98,11 +98,10 @@
 <script type="x" id="ch0103/13">
 	var n = Number(prompt("请输入一个三位数：n"))
 
-	var a = parseInt(n / 100)
-	var b = parseInt((n - a * 100) / 10)
-	var c = n - a * 100 - b * 10
-
-	console.log(c + b + a)
+	var a = (n % 10) *100 
+	var b = (n %100) - (n %10)
+	var c = (n -(n % 100)) / 100
+	console.log(a+""+b+""+c)
 </script>
 <script type="x" id="ch0103/14">
 	var h = Number(prompt("请输入小圆桶的高度：h"))
