@@ -5,19 +5,19 @@
 	console.log(a+b)
 </script>
 <script type="x" id="ch0103/02">
-	var a = Number(prompt("请输入整数：a"))
-	var b = Number(prompt("请输入整数：b"))
-	var c = Number(prompt("请输入整数：c"))
+	var a = prompt("请输入整数：a") | 0
+	var b = prompt("请输入整数：b") | 0
+	var c = prompt("请输入整数：c") | 0
   if( -10000 < a && a < 10000 &&  -10000 < b&& b < 10000 &&  -10000 < c && c < 10000){
     console.log((a+b)*c)
   }
 </script>
 <script type="x" id="ch0103/03">
-	var a = Number(prompt("请输入整数：a"))
-	var b = Number(prompt("请输入整数：b"))
-	var c = Number(prompt("请输入整数：c, c不能为0"))
+	var a = prompt("请输入整数：a") | 0
+	var b = prompt("请输入整数：b") | 0
+	var c = prompt("请输入整数：c, c不能为0") | 0
 	if( -10000 < a && a < 10000 &&  -10000 < b&& b < 10000 &&  -10000 < c && c < 10000 && c != 0){
-		console.log((a+b)/c)
+		console.log(((a+b)/c) | 0)
 	}
 </script>
 <script type="x" id="ch0103/04">
@@ -83,9 +83,7 @@
 	var b = Number(prompt("请输入正数：b"))
 
 	if(a > 0 && b > 0){
-		var k = parseInt(a / b)
-		var r = a - k * b
-		console.log(r)
+		console.log((a % b).toFixed(4))
 	}
 </script>
 
@@ -104,7 +102,7 @@
 	var b = parseInt((n - a * 100) / 10)
 	var c = n - a * 100 - b * 10
 
-	console.log(c + " " + b + " "+ a)
+	console.log(c + b + a)
 </script>
 <script type="x" id="ch0103/14">
 	var h = Number(prompt("请输入小圆桶的高度：h"))
@@ -419,7 +417,7 @@
   	console.log("Invalid operator!")
   }
 </script>
-<script type="text/javascript" id="ch0104/20">
+<script type="x" id="ch0104/20">
   var a = Number(prompt())
   var b = Number(prompt())
   var c = Number(prompt())
@@ -435,18 +433,15 @@
         x1 = (i + k).toFixed(5)
         x2 = (i - k).toFixed(5)
         if( x1 > x2){
-          console.log("x1="+ x1)
-          console.log("x2="+ x2)
+          console.log("x1="+x1+";x2="+x2)
         }else{
-          console.log("x1="+ x2)
-          console.log("x2="+ x1)
+          console.log("x1="+x2+";x2="+x1)
         }
       }else{
         k = Math.sqrt(-delta)/ (2*a)
         x1 = j.toFixed(5) + "+" + k.toFixed(5) + "i";
         x2 = j.toFixed(5) + "-" + k.toFixed(5) + "i";
-        console.log("x1="+ x1)
-        console.log("x2="+ x2)
+        console.log("x1="+x2+";x2="+x1)
       }
   }
 </script>
