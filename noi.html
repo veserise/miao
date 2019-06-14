@@ -8,14 +8,15 @@
 	var a = Number(prompt("请输入整数：a"))
 	var b = Number(prompt("请输入整数：b"))
 	var c = Number(prompt("请输入整数：c"))
-
-	console.log((a+b)*c)
+  if( -10000 < a && a < 10000 &&  -10000 < b&& b < 10000 &&  -10000 < c && c < 10000){
+    console.log((a+b)*c)
+  }
 </script>
 <script type="x" id="ch0103/03">
 	var a = Number(prompt("请输入整数：a"))
 	var b = Number(prompt("请输入整数：b"))
 	var c = Number(prompt("请输入整数：c, c不能为0"))
-	if( c != 0){
+	if( -10000 < a && a < 10000 &&  -10000 < b&& b < 10000 &&  -10000 < c && c < 10000 && c != 0){
 		console.log((a+b)/c)
 	}
 </script>
@@ -418,29 +419,36 @@
   	console.log("Invalid operator!")
   }
 </script>
-<script type="x" id="ch0104/20">
+<script type="text/javascript" id="ch0104/20">
   var a = Number(prompt())
   var b = Number(prompt())
   var c = Number(prompt())
 
   var x1 , x2 ,j =-b / (2*a) , k
   var delta = b * b - 4 * a * c
-  if(delta == 0){
-		x1 = x2 = j;
-		console.log("x1=x2="+x1);
-	}else if(delta > 0){
-		k = Math.sqrt(delta)/ (2*a)
-		x1 = (i + k).toFixed(5)
-		x2 = (i - k).toFixed(5)
-		console.log("x1="+ x1)
-		console.log("x2="+ x2)
-	}else{
-		k = Math.sqrt(-delta)/ (2*a)
-		x1 = j.toFixed(5) + "+" + k.toFixed(5) + "i";
-		x2 = j.toFixed(5) + "-" + k.toFixed(5) + "i";
-		console.log("x1="+ x1)
-		console.log("x2="+ x2)
-	}
+  if(a != 0){
+    if(delta == 0){
+        x1 = x2 = j;
+        console.log("x1=x2="+x1);
+      }else if(delta > 0){
+        k = Math.sqrt(delta)/ (2*a)
+        x1 = (i + k).toFixed(5)
+        x2 = (i - k).toFixed(5)
+        if( x1 > x2){
+          console.log("x1="+ x1)
+          console.log("x2="+ x2)
+        }else{
+          console.log("x1="+ x2)
+          console.log("x2="+ x1)
+        }
+      }else{
+        k = Math.sqrt(-delta)/ (2*a)
+        x1 = j.toFixed(5) + "+" + k.toFixed(5) + "i";
+        x2 = j.toFixed(5) + "-" + k.toFixed(5) + "i";
+        console.log("x1="+ x1)
+        console.log("x2="+ x2)
+      }
+  }
 </script>
 <script type="x" id="ch0104/21">
   var n = Number(prompt())
