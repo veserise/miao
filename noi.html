@@ -417,29 +417,29 @@
   }
 </script>
 <script type="x" id="ch0104/20">
-  var a = Number(prompt())
-  var b = Number(prompt())
-  var c = Number(prompt())
+  var a = prompt() | 0
+  var b = prompt() | 0
+  var c = prompt() | 0
 
   var x1 , x2 ,j =-b / (2*a) , k
   var delta = b * b - 4 * a * c
+
   if(a != 0){
     if(delta == 0){
         x1 = x2 = j;
         console.log("x1=x2="+x1);
+
       }else if(delta > 0){
         k = Math.sqrt(delta)/ (2*a)
         x1 = (i + k).toFixed(5)
         x2 = (i - k).toFixed(5)
-        if( x1 > x2){
+
           console.log("x1="+x1+";x2="+x2)
-        }else{
-          console.log("x1="+x2+";x2="+x1)
-        }
       }else{
         k = Math.sqrt(-delta)/ (2*a)
         x1 = j.toFixed(5) + "+" + k.toFixed(5) + "i";
         x2 = j.toFixed(5) + "-" + k.toFixed(5) + "i";
+        
         console.log("x1="+x2+";x2="+x1)
       }
   }
