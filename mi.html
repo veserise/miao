@@ -17,10 +17,6 @@
     .fa-shopping-cart{
       font-size: 1.5em;
     }
-    .fa-search{
-      list-style: none;
-      font-size: 1.5em;
-    }
     .fa-search {
       color:#999;
     }
@@ -44,6 +40,9 @@
     .fa-hover:hover{
       box-shadow:0 15px 30px rgba(0,0,0,0.1);
       transform:translate3d(0, -2px, 0); /*y轴上移动2px*/
+     }
+     .fa-hover{
+       transition:.2s;
      }
      /*背景颜色*/
     .bgc-red{
@@ -203,7 +202,6 @@
     /* 购物车 */
     .topbar-cart{
       width:120px;
-       z-index:40;
       float: right;
       margin-left: 15px;
       position: relative;
@@ -220,6 +218,7 @@
       line-height: 40px;
       text-align: center;
       color: #b0b0b0;
+      transition: .3s;
       background: #424242;
     }
     .topbar-cart a:hover + div.shopping{
@@ -237,7 +236,7 @@
       background-color: #fff;
       box-sizing: border-box;
       box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-      transition: .6s ;
+      transition: .3s;
     }
     .cart-line {
       max-height: 535px;
@@ -385,42 +384,101 @@
     /* 搜索框 */
     .search{
       float: right;
-      display: flex;
-      height:50px;
       width:296px;
       margin-top:25px;
-      border-collapse: separate;
+      position:relative;
     }
-    .search-input{
-      flex-grow: 1;
-      display: table-cell;
-      -webkit-appearance: none;
+    .search form{
+      font-size: 0;
+    }
+    .search .search-content{
+      width: 245px;
+      height: 50px;
+      padding: 0 10px;
+      border: 1px solid #e0e0e0;
+      font-size: 14px;
+      line-height: 50px;
+      outline: 0;
+      transition: all .2s;
+      vertical-align: top;
       display: inline-block;
-      border:1px solid #ccc;
+      box-sizing: border-box;
     }
-    .search-button{
-      margin: 0;
-      padding: 0;
-      outline: none; 
+    .search .submit{
+      display: inline-block;
       width: 52px;
-      background-color: #fff;
-      border-width: 1px;
-      border-style: solid;
-      border-color: #ccc;
-      font-size: 12px;
-      display: table-cell;
-      position: relative;
+      height: 50px;
+      border: 1px solid #e0e0e0;
+      margin-left: -1px;
+      font-size: 24px;
+      line-height: 50px;
+      background: #fff;
+      color: #616161;
+      outline: 0;
+      transition: all .2s;
+      text-align: center;
+      box-sizing: border-box;
     }
-
+    .search .search-commend{
+      position: absolute;
+      background-color: rgb(238, 238, 238);
+      font-size: 12px;
+      padding: 0 4px;
+      transition: all .2s;
+    }
+    .search .search-commend:nth-of-type(1){
+      top: 15px;
+      right: 62px;
+    }
+    .search .search-commend:nth-of-type(2){
+      top: 15px;
+      right: 130px;
+    }
+    .search .search-list{
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: -1px;
+      width: calc(100% - 51px);
+      border: 1px solid #ff6700;
+      display: none;
+      background-color: #fff;
+      z-index: 999;
+    }
+    .search .search-list li{
+      float: left;
+      width: 100%;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+    .search .search-list li:hover{
+      cursor: pointer;
+      background-color: #eee;
+    }
+    .search .search-list li .pl-name{
+      float: left;
+      font-size: 12px;
+      line-height: 30px;
+    }
+    .search .search-list li .pl-number{
+      float: right;
+      color:#ccc;
+      font-size: 12px;
+      line-height: 30px;
+    }
+  
     /*search框被focus时的效果*/
-    select.search-input:focus,
-    select.search-input:focus + .search-button{
+    input.search-content:focus,
+    input.search-content:focus + .submit{
       outline: none;
       border:1px solid #F57921;
+      color: #fff;
     }
-
+    input.search-content:focus ~ .search-list{
+      display: block;
+    }
     /*search框被hover时的效果*/
-    button.search-button:hover{
+    label.submit:hover{
       background-color: #F57921;
       border:1px solid #F57921;
     }
@@ -762,7 +820,6 @@
        height: 58px;
        position: relative;
     }
-   
     content .content h2{
       font-weight: 200;
       margin:0;
@@ -770,15 +827,17 @@
       font-size: 22px;
       color: #333;
     }
-    content .content .content-title::after{
-      content:'查看全部 >';
+    content .content .content-title .title-leg{
       top:0;
       right:0;
-      line-height: 58px;
+      line-height: 60px;
       width:100px;
-      font-size: 18px;
+      font-size: 16px;
       white-space: nowrap;
       position: absolute;
+    }
+    content .content .content-title .title-leg:hover{
+      color: #FF6700
     }
     content .content .content-foo{
       width: 234px;
@@ -806,20 +865,17 @@
     content .content .content-bar > a{
       top:-40px;
       right: 0;
-      height: 40px;
-      line-height: 40px;
+      white-space: nowrap;
+      color: #757575;
+      font-size: 18px;
+      text-align: center;
       margin-left: 30px;
       position: absolute;
-      transition: z-index 0s 10s;
-    }
-    content .content .content-bar > a  span{
-      font-size: 16px;
-      z-index: 200;
-      height: 33px;
-      white-space: nowrap;
-      display: block;
+      border-width:0 0 1px 0;
+      border-style: solid;
+      border-color:transparent; 
       box-sizing: border-box;
-      transition: z-index 0s 10s;
+      transition:all .3s ;
     }
     content .content .content-bar > a:nth-of-type(3){
       right: 60px;
@@ -832,12 +888,9 @@
     }
     content .content .content-bar > a:hover{
       color:red;
+      border-color: #FF6700;
     }
-    content .content .content-bar > a:hover span{
-      border-bottom:1px solid #FF6700;
-      z-index: 300;
-      transition: z-index 2s 10s;
-    }
+    
     content .content .content-bar > a:hover + .content-bar-box{
       z-index:200;
       transition: z-index 2s 0s;
@@ -1049,25 +1102,35 @@
        display: block;
        border:1px solid #aaa;
     }
-    content .flow-fivebox input.input-counter:checked + ul.counter-ul{
-      margin-left: 0;
-      z-index:1;
-      animation: none;
+    .flow-fivebox input.input-counter:nth-of-type(1):checked ~ .recommand ul.counter-ul {
+      left: calc(-248px * 0);
     }
-    content .flow-fivebox ul.counter-ul{
-      display: flex;
+    .flow-fivebox input.input-counter:nth-of-type(2):checked ~ .recommand ul.counter-ul {
+      left: calc(-248px * 5);
+    }
+    .flow-fivebox input.input-counter:nth-of-type(3):checked ~ .recommand ul.counter-ul {
+      left: calc(-248px * 10);
+    }
+    .flow-fivebox input.input-counter:nth-of-type(4):checked ~ .recommand ul.counter-ul {
+      left: calc(-248px * 15);
+    }
+    content .flow-fivebox .recommand{
       z-index: 100;
       width: 1226px;
-      margin-left: 0;
-      animation: leave 1s ease 0s;
+      height: 320px;
+      position:relative;
+      overflow:hidden;
+    }
+    content .content-flow ul.counter-ul{
+      left:0;
+      width: 4960px; 
+      position:absolute;
+      transition: 1s;
     }
     content .content-flow .flow-fivebox ul.counter-ul > li{
-       margin:0 14px 14px 0;
+       float:left;
+       position: relative;
     }
-     content .content-flow .flow-fivebox ul.counter-ul > li:nth-of-type(5){
-       margin:0 0px 14px 0;
-    }
-    
 
     content .content-flow ul {
       display: flex;
@@ -1084,11 +1147,12 @@
     content .content-flow .flow-fivebox{
       float: left;
       display: flex;
-      /*height: 100%;*/
       overflow: hidden;
+      box-sizing: border-box;
     }
    content .content-flow .flow-fivebox ul li{
      margin:0 14px 14px 0;
+     box-sizing: border-box;
    }
    
     content .flow-fivebox ul li .box{
@@ -1173,7 +1237,7 @@
           height:40px;
           color:#ddd;
           line-height: 40px;
-          font-size: 1.2em;
+          font-size: 2em;
           display: none;
           right: 0;
           cursor: pointer;
@@ -1339,7 +1403,7 @@
     .right .right-hidden{
       top: 0;
       width: 140px;
-      left: -110%;
+      right: 90px;
       flex-flow: column;
       position: absolute;
       z-index: 100;
@@ -1426,17 +1490,38 @@
     .right a:nth-of-type(1):hover + div.right-hidden{
       display: flex;
     }
-    @keyframes leave{
-      from{
-        margin-left:-100%;
+   
+    @media (max-width: 1600px) {
+      .right,.bar-right{
+       width:82px;
       }
-      to{
-        margin-left:0;
+     
+    }
+    @media (max-width: 1200px) {
+      .right,.bar-right{
+         width:40px;
+      }
+      .right .imgs{
+       margin:0;
+      }
+      .right .right-hidden{
+        right:45px;
+      }
+      .bar-right P{
+        display: none;
       }
     }
-    @media (max-height: 500px) {
+    @media (max-width: 800px) {
+      .right,.bar-right{
+        display: none;
+      }
+      .bar-right P{
+        display: none;
+      }
+    }
+    @media (max-height: 600px) {
       .bar-button{
-      display: none;
+        display: none;
       }
     }
   </style>
@@ -1983,13 +2068,47 @@
         </ul>
       </div>
       <div class="search">
-        <select class="search-input">
-          <option value="1">optopn</option>
-          <option value="2">search</option>
-          <option value="3">optopn</option>
-          <option value="4">search-pn</option>
-        </select>
-        <button class="search-button"><i class="fa fa-search"></i></button>
+        <form action="#">
+          <input type="text" name="search-content" class="search-content">
+          <label for="submit" class="submit">
+            <i class="fa fa-search"></i>
+          </label>
+          <input type="submit" value="" id="submit" hidden="">
+          <a href="#" class="search-commend">小米9 SE</a>
+          <a href="#" class="search-commend">小米9</a>
+          <ul class="search-list">
+            <li>
+              <a class="clearfix" href="http://www.baidu.com"><span class="pl-name">小米</span><span class="pl-number">约有6件</span></a>
+            </li>
+            <li>
+              <a class="clearfix" href="#"><span class="pl-name">小米手机</span><span class="pl-number">约有6件</span></a>
+            </li>
+            <li>
+              <a href="#"><span class="pl-name">小米手机</span><span class="pl-number">约有6666件</span></a>
+            </li>
+            <li>
+              <a class="clearfix" href="#"><span class="pl-name">小米手机</span><span class="pl-number">约有6件</span></a>
+            </li>
+            <li>
+              <a class="clearfix" href="#"><span class="pl-name">小米手机</span><span class="pl-number">约有6件</span></a>
+            </li>
+            <li>
+              <a class="clearfix" href="#"><span class="pl-name">小米手机</span><span class="pl-number">约有6件</span></a>
+            </li>
+            <li>
+              <a class="clearfix" href="#"><span class="pl-name">小米手机</span><span class="pl-number">约有6件</span></a>
+            </li>
+            <li>
+              <a class="clearfix" href="#"><span class="pl-name">小米手机</span><span class="pl-number">约有6件</span></a>
+            </li>
+            <li>
+              <a class="clearfix" href="#"><span class="pl-name">小米手机</span><span class="pl-number">约有6件</span></a>
+            </li>
+            <li>
+              <a class="clearfix" href="#"><span class="pl-name">小米手机</span><span class="pl-number">约有6件</span></a>
+            </li>
+          </ul>
+        </form>
       </div>
     </aside>
     <!-- 主要导航栏 -->
@@ -3044,20 +3163,20 @@
           </div>
           <div class="main-img-scroll-left">
             <div class="label">
-              <label for="img1"> < </label>
-              <label for="img2"> < </label>
-              <label for="img3"> < </label>
-              <label for="img4"> < </label>
-              <label for="img5"> < </label>
+              <label for="img1"><i class="fa fa-angle-left"></i></label>
+              <label for="img2"><i class="fa fa-angle-left"></i></label>
+              <label for="img3"><i class="fa fa-angle-left"></i></label>
+              <label for="img4"><i class="fa fa-angle-left"></i></label>
+              <label for="img5"><i class="fa fa-angle-left"></i></label>
             </div>
           </div>
           <div class="main-img-scroll-right">
             <div class="label">
-              <label for="img1"> > </label>
-              <label for="img2"> > </label>
-              <label for="img3"> > </label>
-              <label for="img4"> > </label>
-              <label for="img5"> > </label>
+              <label for="img1"><i class="fa fa-angle-right"></i></label>
+              <label for="img2"><i class="fa fa-angle-right"></i></label>
+              <label for="img3"><i class="fa fa-angle-right"></i></label>
+              <label for="img4"><i class="fa fa-angle-right"></i></label>
+              <label for="img5"><i class="fa fa-angle-right"></i></label>
             </div>
           </div>
         </div>
@@ -3098,7 +3217,12 @@
     <!-- 主要内容 -->
     <content>
       <div class="content">
-        <div class="content-title"><h2>手机</h2></div>
+        <div class="content-title">
+          <h2>手机</h2>
+          <a href="#" class="title-leg">
+            查看全部 <i class="fa fa-chevron-circle-right"></i>
+          </a>
+        </div>
         <div class="content-foo">
           <a href="#">
             <img src="https://i1.mifile.cn/a4/xmad_15589606696364_lPMvT.jpg" alt="" class="fa-hover">
@@ -3211,7 +3335,7 @@
           </ul>
         </div>
         <div class="content-bar">
-          <a href="#"><span>热门</span></a>
+          <a href="#">热门</a>
           <div class="content-bar-box">
             <ul>
               <li class="fa-hover">
@@ -3226,7 +3350,7 @@
                 </div>
                 <div class="data-tooltip">
                   <p>
-                  这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错
+                    这里的东西真的很不错<br>这里的东西真的很不错
                   </p>
                 </div>
               </li>
@@ -3242,7 +3366,7 @@
                 </div>
                 <div class="data-tooltip">
                   <p>
-                  这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错
+                      这里的东西真的很不错<br>这里的东西真的很不错
                   </p>
                 </div>
               </li>
@@ -3258,7 +3382,7 @@
                 </div>
                 <div class="data-tooltip">
                   <p>
-                  这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错
+                  这里的东西真的很不错，这这里的东西真的很不错<br>这里的东西真的很不错<br>这里的东西真的很不错
                   </p>
                 </div>
               </li>
@@ -3274,7 +3398,7 @@
                 </div>
                 <div class="data-tooltip">
                   <p>
-                  这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错
+                      这里的东西真的很不错<br>这里的东西真的很不错
                   </p>
                 </div>
               </li>
@@ -3290,7 +3414,7 @@
                 </div>
                 <div class="data-tooltip">
                   <p>
-                  这里的东西真的很不错，这里的东西真的很不错
+                      这里的东西真的很不错<br>这里的东西真的很不错
                   </p>
                 </div>
               </li>
@@ -3306,7 +3430,7 @@
                 </div>
                 <div class="data-tooltip">
                   <p>
-                  这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错，这里的东西真的很不错
+                      这里的东西真的很不错<br>这里的东西真的很不错
                   </p>
                 </div>
               </li>
@@ -3349,7 +3473,7 @@
               </li>
             </ul>
           </div>
-          <a href="#"><span>电视影音</span></a>
+          <a href="#">电视影音</a>
           <div class="content-bar-box">
             <ul>
               <li class="fa-hover">
@@ -3487,7 +3611,7 @@
               </li>
             </ul>
           </div>
-          <a href="#"><span>电脑</span></a>
+          <a href="#">电脑</a>
           <div class="content-bar-box">
             <ul>
               <li class="fa-hover">
@@ -3623,7 +3747,7 @@
               </li>
             </ul>
           </div>
-          <a href="#"><span>家居</span></a>
+          <a href="#">家居</a>
           <div class="content-bar-box">
             <ul>
               <li class="fa-hover">
@@ -4345,237 +4469,255 @@
           <h2>为你推荐</h2>
           <div class="flow-fivebox">
             <input type="radio" name="counter" id="conut-1" class="input-counter" checked>
-            <ul class="counter-ul">
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                 <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1554694193.34996486!140x140.png" alt="">
-                  </a>
-                  <p class="desc">小米Play 4GB+64GB</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">605评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                   <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                   <p class="evaluate">605评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1502258923.87257653!140x140.jpg" alt="">
-                  </a>
-                  <p class="desc">被医生巴氏牙刷</p>
-                  <p class="price">39元</p> 
-                   <p class="evaluate">2万评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">2万评价</p>
-                </div>
-              </li>
-              <li class="fa-hover">
-                <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">2万评价</p>
-                </div>
-              </li>
-            </ul>
             <input type="radio" name="counter" id="conut-2" class="input-counter">
-            <ul class="counter-ul">
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                 <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1554694193.34996486!140x140.png" alt="">
-                  </a>
-                  <p class="desc">小米Play 4GB+64GB</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">605评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                   <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                   <p class="evaluate">605评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1502258923.87257653!140x140.jpg" alt="">
-                  </a>
-                  <p class="desc">被医生巴氏牙刷</p>
-                  <p class="price">39元</p> 
-                   <p class="evaluate">2万评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">2万评价</p>
-                </div>
-              </li>
-              <li class="fa-hover">
-                <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">2万评价</p>
-                </div>
-              </li>
-            </ul>
             <input type="radio" name="counter" id="conut-3" class="input-counter">
-            <ul class="counter-ul">
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                 <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1554694193.34996486!140x140.png" alt="">
-                  </a>
-                  <p class="desc">小米Play 4GB+64GB</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">605评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                   <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                   <p class="evaluate">605评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1502258923.87257653!140x140.jpg" alt="">
-                  </a>
-                  <p class="desc">被医生巴氏牙刷</p>
-                  <p class="price">39元</p> 
-                   <p class="evaluate">2万评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">2万评价</p>
-                </div>
-              </li>
-              <li class="fa-hover">
-                <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">2万评价</p>
-                </div>
-              </li>
-            </ul>
             <input type="radio" name="counter" id="conut-4" class="input-counter">
-            <ul class="counter-ul">
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                 <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1554694193.34996486!140x140.png" alt="">
-                  </a>
-                  <p class="desc">小米Play 4GB+64GB</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">605评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                   <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                   <p class="evaluate">605评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1502258923.87257653!140x140.jpg" alt="">
-                  </a>
-                  <p class="desc">被医生巴氏牙刷</p>
-                  <p class="price">39元</p> 
-                   <p class="evaluate">2万评价</p> 
-                </div>
-              </li>
-              <li class="fa-hover">
-                 <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">2万评价</p>
-                </div>
-              </li>
-              <li class="fa-hover">
-                <div class="content-bar-div">
-                   <p class="flag" style="display:none">新品</p>
-                  <a href="#">
-                    <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
-                  </a>
-                  <p class="desc">小米壁画电视 65英寸</p>
-                  <p class="price">6999元</p> 
-                  <p class="evaluate">2万评价</p>
-                </div>
-              </li>
-            </ul>
+            <div class="recommand">
+              <ul class="counter-ul">
+                  <li class="fa-hover">
+                    <div class="content-bar-div">
+                    <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1554694193.34996486!140x140.png" alt="">
+                      </a>
+                      <p class="desc">小米Play 4GB+64GB</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">605评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                    <div class="content-bar-div">
+                      <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">605评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                    <div class="content-bar-div">
+                      <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1502258923.87257653!140x140.jpg" alt="">
+                      </a>
+                      <p class="desc">被医生巴氏牙刷</p>
+                      <p class="price">39元</p> 
+                      <p class="evaluate">2万评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                    <div class="content-bar-div">
+                      <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">2万评价</p>
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                    <div class="content-bar-div">
+                      <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">2万评价</p>
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                      <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1554694193.34996486!140x140.png" alt="">
+                      </a>
+                      <p class="desc">小米Play 4GB+64GB</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">605评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                        <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                        <p class="evaluate">605评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1502258923.87257653!140x140.jpg" alt="">
+                      </a>
+                      <p class="desc">被医生巴氏牙刷</p>
+                      <p class="price">39元</p> 
+                        <p class="evaluate">2万评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">2万评价</p>
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                    <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">2万评价</p>
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                        <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                        <p class="evaluate">605评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1502258923.87257653!140x140.jpg" alt="">
+                      </a>
+                      <p class="desc">被医生巴氏牙刷</p>
+                      <p class="price">39元</p> 
+                        <p class="evaluate">2万评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">2万评价</p>
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                    <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">2万评价</p>
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                        <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                        <p class="evaluate">605评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1502258923.87257653!140x140.jpg" alt="">
+                      </a>
+                      <p class="desc">被医生巴氏牙刷</p>
+                      <p class="price">39元</p> 
+                        <p class="evaluate">2万评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">2万评价</p>
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                    <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">2万评价</p>
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                        <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                        <p class="evaluate">605评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1502258923.87257653!140x140.jpg" alt="">
+                      </a>
+                      <p class="desc">被医生巴氏牙刷</p>
+                      <p class="price">39元</p> 
+                        <p class="evaluate">2万评价</p> 
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                      <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">2万评价</p>
+                    </div>
+                  </li>
+                  <li class="fa-hover">
+                    <div class="content-bar-div">
+                        <p class="flag" style="display:none">新品</p>
+                      <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1555935546.09711490!220x220.jpg" alt="">
+                      </a>
+                      <p class="desc">小米壁画电视 65英寸</p>
+                      <p class="price">6999元</p> 
+                      <p class="evaluate">2万评价</p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
             <div class="counter">
               <div class="counter-left">
                 <label for="conut-1"><i class="fa fa-chevron-left"></i></label>
@@ -4623,14 +4765,14 @@
                       <label for="icon-3"></label>
                     </div>
                     <div class="indicators-left">
-                        <label for="icon-1"><i class="fa fa-chevron-left"></i></label>
-                        <label for="icon-2"><i class="fa fa-chevron-left"></i></label>
-                        <label for="icon-3"><i class="fa fa-chevron-left"></i></label>
+                        <label for="icon-1"><i class="fa fa-angle-left"></i></label>
+                        <label for="icon-2"><i class="fa fa-angle-left"></i></label>
+                        <label for="icon-3"><i class="fa fa-angle-left"></i></label>
                       </div>
                     <div class="indicators-right">
-                        <label for="icon-1"><i class="fa fa-chevron-right"></i></label>
-                        <label for="icon-2"><i class="fa fa-chevron-right"></i></label>
-                        <label for="icon-3"><i class="fa fa-chevron-right"></i></label>
+                        <label for="icon-1"><i class="fa fa-angle-right"></i></label>
+                        <label for="icon-2"><i class="fa fa-angle-right"></i></label>
+                        <label for="icon-3"><i class="fa fa-angle-right"></i></label>
                     </div>
                   </div>
                 </div>
@@ -4661,14 +4803,14 @@
                       <label for="icon-2-3"></label>
                     </div>
                     <div class="indicators-left">
-                        <label for="icon-2-1"><i class="fa fa-chevron-left"></i></label>
-                        <label for="icon-2-2"><i class="fa fa-chevron-left"></i></label>
-                        <label for="icon-2-3"><i class="fa fa-chevron-left"></i></label>
+                        <label for="icon-2-1"><i class="fa fa-angle-left"></i></label>
+                        <label for="icon-2-2"><i class="fa fa-angle-left"></i></label>
+                        <label for="icon-2-3"><i class="fa fa-angle-left"></i></label>
                       </div>
                     <div class="indicators-right">
-                        <label for="icon-2-1"><i class="fa fa-chevron-right"></i></label>
-                        <label for="icon-2-2"><i class="fa fa-chevron-right"></i></label>
-                        <label for="icon-2-3"><i class="fa fa-chevron-right"></i></label>
+                        <label for="icon-2-1"><i class="fa fa-angle-right"></i></label>
+                        <label for="icon-2-2"><i class="fa fa-angle-right"></i></label>
+                        <label for="icon-2-3"><i class="fa fa-angle-right"></i></label>
                     </div>
                   </div>
                 </div>
@@ -4699,14 +4841,14 @@
                       <label for="icon-3-3"></label>
                     </div>
                     <div class="indicators-left">
-                        <label for="icon-3-1"><i class="fa fa-chevron-left"></i></label>
-                        <label for="icon-3-2"><i class="fa fa-chevron-left"></i></label>
-                        <label for="icon-3-3"><i class="fa fa-chevron-left"></i></label>
+                        <label for="icon-3-1"><i class="fa fa-angle-left"></i></label>
+                        <label for="icon-3-2"><i class="fa fa-angle-left"></i></label>
+                        <label for="icon-3-3"><i class="fa fa-angle-left"></i></label>
                       </div>
                     <div class="indicators-right">
-                        <label for="icon-3-1"><i class="fa fa-chevron-right"></i></label>
-                        <label for="icon-3-2"><i class="fa fa-chevron-right"></i></label>
-                        <label for="icon-3-3"><i class="fa fa-chevron-right"></i></label>
+                        <label for="icon-3-1"><i class="fa fa-angle-right"></i></label>
+                        <label for="icon-3-2"><i class="fa fa-angle-right"></i></label>
+                        <label for="icon-3-3"><i class="fa fa-angle-right"></i></label>
                     </div>
                   </div>
                 </div>
@@ -4737,14 +4879,14 @@
                       <label for="icon-4-3"></label>
                     </div>
                     <div class="indicators-left">
-                        <label for="icon-4-1"><i class="fa fa-chevron-left"></i></label>
-                        <label for="icon-4-2"><i class="fa fa-chevron-left"></i></label>
-                        <label for="icon-4-3"><i class="fa fa-chevron-left"></i></label>
+                        <label for="icon-4-1"><i class="fa fa-angle-left"></i></label>
+                        <label for="icon-4-2"><i class="fa fa-angle-left"></i></label>
+                        <label for="icon-4-3"><i class="fa fa-angle-left"></i></label>
                       </div>
                     <div class="indicators-right">
-                        <label for="icon-4-1"><i class="fa fa-chevron-right"></i></label>
-                        <label for="icon-4-2"><i class="fa fa-chevron-right"></i></label>
-                        <label for="icon-4-3"><i class="fa fa-chevron-right"></i></label>
+                        <label for="icon-4-1"><i class="fa fa-angle-right"></i></label>
+                        <label for="icon-4-2"><i class="fa fa-angle-right"></i></label>
+                        <label for="icon-4-3"><i class="fa fa-angle-right"></i></label>
                     </div>
                   </div>
                 </div>
