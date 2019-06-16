@@ -451,3 +451,261 @@
   	console.log(n - parseInt( y / x) -1)
   }
 </script>
+<script type="x" id="ch0105/01">
+   var n = Number(prompt("人数"))
+   var sum = 0
+   for(var i =0;i<n;i++){
+    sum +=Number(prompt("分数"))
+   }
+   console.log((sum/n).toFixed(2))
+</script>
+<script type="x" id="ch0105/02">
+   var sum = 0
+   for(var i =0;i<12;i++){
+    sum +=Number(prompt("每个月的结余"))
+   }
+   console.log("$"+(sum/12).toFixed(2))
+</script>
+<script type="x" id="ch0105/03">
+   var n = Number(prompt("样本容量"))
+   var sum = 0
+   if(n < 100){
+     for(var i =0;i<n;i++){
+      sum +=Number(prompt(""))
+     }
+    console.log((sum/n).toFixed(4))
+   }
+</script>
+<script type="x" id="ch0105/04">
+   var n = Number(prompt("n"))
+   var sum = 0
+   for(var i =0;i<n;i++){
+    sum +=Number(prompt(""))
+   }
+  console.log(sum+" "+(sum/n).toFixed(5))
+</script>
+<script type="x" id="ch0105/05">
+  var n = Number(prompt("n"))
+  var sum = 0 ,p = 0
+  if(1 <= n && n < 100){
+   for(var i =0;i<n;i++){
+    p =Number(prompt(""))
+    if(sum >= p){
+      sum = sum
+    }else{
+      sum = p
+    }
+   }
+    console.log(sum)
+  }
+</script>
+<script type="x" id="ch0105/06">
+  var n = Number(prompt("n"))
+  var max = 0 , min = 0 ,p = 0
+  if(1 <= n && n <= 1000){
+   for(var i =0;i<n;i++){
+    p =Number(prompt(""))
+    if(max >= p){
+      if(min >= p){
+        min = p
+      }
+    }else{
+      max = p
+    }
+   }
+    console.log(max-min)
+  }
+</script>
+<script type="x" id="ch0105/07">
+  var n = Number(prompt("n"))
+  var sum1 = 0 , sum2 = 0 ,sum3 = 0,sums = 0
+  if(1 <= n && n <= 17){
+   for(var i =0;i<n;i++){
+    sum1 +=Number(prompt("金"))
+    sum2 +=Number(prompt("银"))
+    sum3 +=Number(prompt("铜"))
+   }
+   sums = sum1 + sum2 + sum3
+    console.log(sum1+" "+sum2+" "+sum3+" "+sums)
+  }
+</script>
+<script type="x" id="ch0105/08">
+  var n = Number(prompt("n"))
+  var sum = 0 
+  for(var i =0;i<n-1;i++){
+    sum +=Number(prompt("角度"))
+  }
+  console.log((n-2)*180 - sum)
+</script>
+<script type="x" id="ch0105/09">
+  var m = Number(prompt("m"))
+  var n = Number(prompt("n"))
+  var sum = 0 
+  if(m <= n && n <= 300){
+    for(var i = m;i <= n;i++){
+      if(i % 2 != 0){
+        sum +=i
+      }
+    }
+  }
+  console.log(sum)
+</script>
+<script type="x" id="ch0105/10">
+  var m = Number(prompt("m"))
+  var n = Number(prompt("n"))
+  var sum = 0 
+  if(0 < m && m < n && n < 100){
+    for(var i = m;i <= n;i++){
+      if(i % 17 == 0){
+      sum +=i
+      }
+    }
+  }
+  console.log(sum)
+</script>
+<script type="x" id="ch0105/11">
+  var n = Number(prompt("n"))
+  var c1 = 0 ,c2 = 0,c3 = 0
+  for(var i = 0;i < n;i++){
+    var a = Number(prompt())
+    if(a / 1 == 1){
+      c1 +=1
+    }
+    if(a % 5 == 0 && a % 10 != 0){
+      c2 +=1
+    }
+     if(a % 10 == 0){
+      c3 +=1
+    }
+  }
+  console.log(c1)
+  console.log(c2)
+  console.log(c3)
+</script>
+<script type="x" id="ch0105/12">
+  var n = Number(prompt("n"))
+  var m = Number(prompt("m"))
+  var c = 0 ,b = 0
+  if(n <= 100){
+    for(var i = 0;i < n;i++){
+      c = Number(prompt(""))
+      if(c == m){
+        b++
+      }
+    }
+  }
+  console.log(b)
+</script>
+<script type="x" id="ch0105/13">
+  var a = Number(prompt("a"))
+  var n = Number(prompt("n"))
+  console.log(Math.pow(a,n))
+</script>
+<script type="x" id="ch0105/14">
+  var x = Number(prompt("x"))
+  var n = Number(prompt("n"))
+  if(1 <= x && x <= 100 &&1 <= n && n <= 100){
+    for(var i = 0; i< n; i++){
+      x += 0.001 * x
+    }
+  }
+  console.log(x.toFixed(4))
+</script>
+<script type="x" id="ch0105/15">
+  var r = Number(prompt("r"))
+  var m = Number(prompt("m"))
+  var y = Number(prompt("y"))
+  if(1 <= r && r <= 20 &&100 <= m && m <= 1000000 && 1 <= r && r <= 20){
+    for(var i = 0; i< y; i++){
+      m += r/100 *m
+    }
+  }
+  console.log(parseInt(m))
+</script>
+<script type="x" id="ch0105/16">
+  var n = Number(prompt("n"))
+  var k = Number(prompt("k"))
+  var y = 0
+  if(10 <= n && n <= 50 &&1 <= k && k <= 20){
+    for(y = 0;y < 21;y++){
+      if(200 * Math.pow((1 + 0.01 * k),y-1) <= n * y){
+        console.log(y)
+         break
+      }
+    }
+    if(y > 20){
+      console.log("Impossible")
+    }
+  }
+</script>
+<script type="x" id="ch0105/17">
+  var k = Number(prompt("k"))
+  var arr = new Array()
+  arr[0] = 1 ,arr[1] = 1
+  if(1 <= k && k <= 46){
+    for(var i = 2;i <= k;i++){
+       arr[i] = arr[i-1] + arr[i-2]
+    }
+    console.log(arr[k-1])
+  }
+</script>
+<script type="x" id="ch0105/18">
+  var n = Number(prompt("n"))
+  var arr = new Array()
+   for(var i = 0;i < n;i++){
+       var x = Number(prompt("x"))
+       var y = Number(prompt("y"))
+       arr[i] = y / x
+    }
+    for(var i = 1;i< arr.length;i++){
+      if(arr[i] - arr[0] > 0.05){
+          console.log("better")
+       }else if(arr[0] - arr[i] > 0.05){
+          console.log("worse")
+       }else{
+        console.log("same")
+       }
+    }
+</script>
+<script type="x" id="ch0105/19">
+  var n = Number(prompt("n"))
+  var arr = new Array()
+  var a = 0,b = 0 ,c = 0,t = 0
+  for(var i =0 ;i<n;i++){
+    a =Number(prompt())
+    b =Number(prompt())
+    c =Number(prompt("人数"))
+    t += 2 * Math.sqrt(a * a + b * b) / 50 + c *1 + c * 0.5
+  }
+  console.log(Math.ceil(t))
+</script>
+<script type="x" id="ch0105/20">
+  var h = Number(prompt("h"))
+  var s = h
+  for(var i = 0; i < 10;i++){
+    h = h / 2
+    s += h * 2
+  }
+  console.log(s-2*h)
+  console.log(h)
+</script>
+<!-- <script type="x" id="ch0105/21">
+</script>
+<script type="x" id="ch0105/22">
+</script>
+<script type="x" id="ch0105/23">
+</script>
+<script type="x" id="ch0105/24">
+</script>
+<script type="x" id="ch0105/25">
+</script>
+<script type="x" id="ch0105/26">
+</script>
+<script type="x" id="ch0105/27">
+</script>
+<script type="x" id="ch0105/28">
+</script>
+<script type="x" id="ch0105/29">
+</script>
+<script type="x" id="ch0105/30">
+</script> -->
