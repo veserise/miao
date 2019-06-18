@@ -969,19 +969,26 @@ if(n < 100){
 </script>
 <script type="x" id="ch0105/38">
   var n = +prompt("n")
-  var a = 0, b = 0
-  if(!n){
+  var k = 0
+  while(k < n){
+    var a = 0, b = 0 ,c = ''
     a = +prompt() 
-    console.log(0)
-  }
-  for (var i = n; i > 0; i--) {
-    a = +prompt() 
-    if(b == 0){
-      console.log(a * i)
+    if(a == 0){
+      b = +prompt() 
+      c +=' '+0
     }else{
-      console.log(" "+a * i)
+      for (var i = a+1; i > 0; i--) {
+        b = +prompt() 
+        if(i == 1){
+          c = c
+          break
+        }else{
+          c+=' '+b * (i-1)
+        }
+      }
     }
-    b++
+    console.log(c.substr(1,b.length))
+    k++
   }
 </script>
 <script type="x" id="ch0105/39">
@@ -1061,10 +1068,10 @@ if(n < 100){
           f +=a
         }
      }
-     s +=f+'\n'
+     s +=f+"\n"
     }
   }
- console.log(s)
+ console.log(s.substr(0,s.length-1))
 </script>
 <script type="x" id="ch0105/43">
   var n = +prompt("n")
