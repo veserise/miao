@@ -1048,7 +1048,7 @@ if(n < 100){
   console.log(b)
 
 </script>
-<script type="text/javascript" id="ch0105/42">
+<script type="x" id="ch0105/42">
   var h = +prompt("h")
   var w = +prompt("w")
   var a =  prompt("a")
@@ -1122,3 +1122,82 @@ if(n < 100){
   }
   console.log(sum)
 </script>
+<script type="x" id="7">
+  var n = +prompt()
+  var b = "NO"
+  if(n % 7 == 0){
+    b = "YES"
+  }
+  if(n % 10 == 7){
+    b = "YES"
+  }
+  if(n / 10 == 7){
+    b = "YES"
+  }
+  console.log(b)
+</script>
+<script type="x" id="sort">
+  var a = +prompt()
+  var b = +prompt()
+  var c = +prompt()
+  var t,e,m 
+  t = a - b
+  e = a - c
+  m = b - c
+  if(t > 0){
+    if(m > 0){
+      console.log(c,b,a)
+    }else{
+      if(e > 0){
+        console.log(b,c,a)
+      }else{
+        console.log(b,a,c)
+      }
+    }
+  }else{
+    if(m < 0){
+      console.log(a,b,c)
+    }else{
+      if(e > 0){
+        console.log(c,a,b)
+      }else{
+        console.log(a,c,b)
+      }
+    }
+  }
+</script>
+<script type="x" id="narcissistic">
+  var n = +prompt()
+  a=parseInt(n/100);
+  b=parseInt((n-a*100)/10);
+  c=parseInt(n-a*100-b*10);
+  if( a*a*a+b*b*b+c*c*c == n){
+    console.log("YES")
+  }else{
+    console.log("NO")
+  }
+</script>
+<script type="x" id="narcissistics">
+  var a , b ,c
+  for (var i = 100; i < 1000; i++) {
+    a = parseInt(i/100);
+    b = parseInt((i-a*100)/10);
+    c = parseInt(i-a*100-b*10);
+    if( a*a*a+b*b*b+c*c*c == i){
+      console.log(i)
+    }
+  }
+</script>
+<script type="x" id="palindrom">
+  var n = prompt()
+  var len = String(n).length
+  var flag = "YES"
+  for(var i = 0, j = len - 1; i < j; i++,j--) {
+    if(n[i] != n[j]) {
+      flag = "NO"
+    }
+  }
+  console.log(flag)
+</script>
+
+
