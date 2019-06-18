@@ -765,7 +765,7 @@ if(n < 100){
 }
 
 </script>
-<script type="x" id="ch0105/25">
+<script type="text/javascript" id="ch0105/25">
   var a = 0,m = 0
   for(var i = 1; i <= 6;i++){
     for(var j = 0; j <= 6;j++){
@@ -774,8 +774,8 @@ if(n < 100){
         a = z * Math.pow(9,2) + j * Math.pow(9,1) + i
         if(m == a){
           console.log(m)
-          console.log(i+""+j+""+z)
-          console.log(z+""+j+""+i)
+          console.log(i+''+j+''+z)
+          console.log(z+''+j+''+i)
         }
       }
     }
@@ -821,7 +821,7 @@ if(n < 100){
       break
     }
   }
-  console.log(b)
+  console.log(b.substr(0,b.length-1))
 </script>
 <script type="x" id="ch0105/29">
  var n = +prompt("n")
@@ -1040,7 +1040,7 @@ if(n < 100){
   console.log(b)
 
 </script>
-<script type="text/javascript" id="ch0105/42">
+<script type="x" id="ch0105/42">
   var h = +prompt("h")
   var w = +prompt("w")
   var a =  prompt("a")
@@ -1055,6 +1055,10 @@ if(n < 100){
           }else{
             f +=' '
           }
+          // if(j == h){
+          //   if(i != 1 || i != w)
+          //     f +='\n'
+          // }
         }else{
           f +=a
         }
