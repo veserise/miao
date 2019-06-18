@@ -1199,5 +1199,59 @@ if(n < 100){
   }
   console.log(flag)
 </script>
+<!-- <script type="text/javascript" id="weekday">
+  var y = prompt()
+  var m = prompt()
 
-
+  var flag = "YES"
+  for(var i = 0, j = len - 1; i < 365; i++,j--) {
+    if(n[i] != n[j]) {
+      flag = "NO"
+    }
+  }
+  console.log(flag)
+</script> -->
+<script type="x" id="prime">
+  var n = +prompt("n")
+  var flag = "YES"
+  if(n == 0 || n == 1){
+      flag = "NO"
+  }
+  if( n == 2 || n == 3){
+      flag = "YES"
+  }
+  for (var i = 2; i <= Math.floor(Math.sqrt(n)); i++) {
+    if(n % i == 0){
+      flag = "NO"
+    }
+  }
+  console.log(flag)
+</script>
+<script type="X" id="primes">
+  for (var n = 2; n < 100; n++) {
+    var flag = true
+    if( n == 2 || n == 3){
+      var flag = true
+    }
+    for (var i = 2; i <= Math.floor(Math.sqrt(n)); i++) {
+      if(n % i == 0){
+        flag = false
+      }
+    }
+    if(flag == true){
+       console.log(n)
+    }
+  }
+</script>
+<script type="X" id="itob">
+  var n = +prompt("n")
+  console.log(''+n)
+</script>
+<!-- <script type="text/javascript" id="sqrt">
+  var n = prompt("n")
+  for (var i = 1.000; i < n; i = i + 0.001) {
+    if(i * i == n){
+      console.log(i)
+    }
+  }
+</script> -->
