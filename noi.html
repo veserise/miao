@@ -765,7 +765,7 @@ if(n < 100){
 }
 
 </script>
-<script type="text/javascript" id="ch0105/25">
+<script type="x" id="ch0105/25">
   var a = 0,m = 0
   for(var i = 1; i <= 6;i++){
     for(var j = 0; j <= 6;j++){
@@ -774,8 +774,9 @@ if(n < 100){
         a = z * Math.pow(9,2) + j * Math.pow(9,1) + i
         if(m == a){
           console.log(m)
-          console.log(i+''+j+''+z)
-          console.log(z+''+j+''+i)
+          console.log(''+i+j+z)
+          console.log(''+z+j+i)
+          break
         }
       }
     }
@@ -1045,6 +1046,7 @@ if(n < 100){
   var w = +prompt("w")
   var a =  prompt("a")
   var b = +prompt("b")
+  var s = ''
   if(h >= 3 && h <= 10 && w >= 5 && w <= 10){
     for (var i = 1; i <= w; i++) {
       var f = ''
@@ -1055,29 +1057,61 @@ if(n < 100){
           }else{
             f +=' '
           }
-          // if(j == h){
-          //   if(i != 1 || i != w)
-          //     f +='\n'
-          // }
         }else{
           f +=a
         }
      }
-     console.log(f)
+     s +=f+'\n'
     }
   }
+ console.log(s)
 </script>
-<!-- <script type="X" id="ch0105/31">
+<script type="x" id="ch0105/43">
+  var n = +prompt("n")
+  var max = 0
+  for (var i = 2; i <= n; i++) {
+    for (var j = i-1; j > 1; j--){
+        if( (i * j == n) && (i % j != 0)){
+          if(i > j){
+            max = i
+          }else{
+            max = j
+          }
+        }
+      }
+  }
+  console.log(max)
 </script>
-<script type="X" id="ch0105/31"></script>
-<script type="X" id="ch0105/31"></script>
-<script type="X" id="ch0105/31"></script>
-<script type="X" id="ch0105/31"></script>
-<script type="X" id="ch0105/31"></script>
-<script type="X" id="ch0105/31"></script>
-<script type="X" id="ch0105/30"></script>
-<script type="X" id="ch0105/30"></script>
-<script type="X" id="ch0105/30"></script>
-<script type="X" id="ch0105/30"></script>
-<script type="X" id="ch0105/30"></script>
-<script type="X" id="ch0105/30"></script> -->
+<script type="x" id="ch0105/44">
+  var n = +prompt("n")
+  var c = 0 , k = 0
+  var i = j = 2
+  var flag = 0, t = 0
+  while(c < n){
+    j = 2
+    flag = 0
+    t = Math.sqrt(i)
+    while(j <= t){
+      if(i % j == 0){
+        flag = 1
+        break
+      }
+      j++
+    }
+    if(flag == 0){
+      c++
+    }
+    i++
+  }
+  console.log(i-1)
+</script>
+<script type="x" id="ch0105/45">
+  var n = +prompt("n")
+  var sum = 0, r = 0 , k = 0
+  while(k < n){
+    r++
+    k +=r
+    sum += r*r
+  }
+  console.log(sum)
+</script>
