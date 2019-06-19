@@ -115,8 +115,9 @@
   /*画一个rgb色彩空间的某一面*/
    for (var i = 5; i <= 85; i++) {
     for (var j = 200; j <= 280; j++) {
-        var a = i+255
-        dot(i,j,"rgb("+a+","+j+",100)")
+        var a = Math.floor((86 -i) / 80 * 255)
+        var b = Math.floor((281-j) / 80 * 255)
+        dot(i,j,"rgb("+a+","+b+",100)")
     }
   }
   /*画一个空心的圆*/
