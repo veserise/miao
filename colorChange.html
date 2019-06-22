@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style>
+		html{
+			width:100%;
+			height: 100vh;
+			font-size:12px;
+			/*background-color: #222;*/
+			font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+		}
+		section { 
+			width:60%;
+			margin: auto;
+		}
+		h1{
+	        margin:auto; 
+	        width: 100%;
+	        font-size: 2em;
+	        line-height: 3em;
+	        height: 20%;
+	        position: relative;
+      	}
+      	h2{
+      		width:100%;
+			height: 5%;
+			font-size: 1.5em;
+			color:#444;
+			margin-top: 5%;
+			margin-bottom: 3%;
+			position: relative;
+			counter-increment: counter_h2;
+      	}
+      	h2::first-letter{
+	      font-size:1.3em;
+	      /*float:left;*/
+	    }
+		h2::before{
+	      content:counter(counter_h2) ". ";
+	    }
+	    h4{
+	    	width:100%;
+			height: 3%;
+			text-indent: 2em;
+			font-size: 1.3em;
+			color:#777;
+			margin-top: 3%;
+			margin-bottom: 3%;
+			position: relative;
+	    }
+		aside{
+		    padding-top: 2.7%;
+		    width: 100%;
+		    height:45%;
+		    margin:auto; 
+		    overflow: hidden;
+		    position: relative;
+		    border: none;
+		}
+		img {
+		    height: 100%;
+		    width: 100%;
+		    object-fit: cover;
+		}
+		input { 
+		   	padding: 0;
+		    border: none;
+		    top: -3%;
+		    position: absolute;
+		    width: 102%;
+		    height: 102%;
+		    cursor: pointer;
+		    mix-blend-mode: hue;
+		}
+		
+		[class*="color-"]{
+		    top: 0px;
+		    width: 15%;
+		    height: 30px;
+		    font-size: 1em;
+		    line-height: 2.5em;
+		    text-align: center;
+		    cursor: pointer;
+		    border:none;
+		    background-color: #ddd;
+			position: absolute;
+		}
+		label.color-fill{
+		    width:55%;
+		    left: 0px;
+		    background-color: #fff;
+		}
+		label.color-mode{
+		    right: 30%;
+		}
+		label.color-pre{
+		    right: 0px;
+		    color: #eee;
+		    background-color: inherit;
+		}
+		label.color-back{
+		    right: 15%;
+		    color: #eee;
+		}
+		label.color-back span{
+			width:100%;
+			height: 100%;
+			display: inline-block;
+		    background-color: #9F3911;
+		}
+
+		[class*="box-"]{
+			width: 100%;
+			margin:auto; 
+		    overflow: hidden;
+			margin-top: 5%;
+			position: relative;
+		}
+		div.box-car{
+		    height: 20%;
+		    background: url(https://files1.porsche.com/filestore/image/multimedia/none/982-718-bo-modelimage-sideshot/thumbwhite/08c829b6-d7eb-11e6-a122-0019999cd470;;twebp/porsche-thumbwhite.webp) repeat left center;
+		}
+		div.box-dog{
+			height: 455px;
+			padding: 2px;
+			margin-bottom: 5%;
+		    background: url(https://c1.mifile.cn/f/i/16/chain/micamera/swhite-dog2.jpg) no-repeat left center;
+		}
+
+		textarea{
+			border-width: 0 2px 0 0;
+			border-color: #247EFF;
+			max-width: 100%;
+			height: 100%;
+			resize: horizontal;
+		    cursor: pointer;
+		    box-sizing: border-box;
+		}
+
+		textarea.car{
+			background: url(https://files1.porsche.com/filestore/image/multimedia/none/982-718-bos-modelimage-sideshot/thumbwhite/2e4f76be-d7eb-11e6-a122-0019999cd470;;twebp/porsche-thumbwhite.webp) repeat left center;
+		}
+	
+		textarea.dog{
+			background: url(https://c1.mifile.cn/f/i/16/chain/micamera/swhite-dog1.jpg) no-repeat left center;
+		}
+
+		[class*="dog-"]{
+			bottom: 0;
+			display: inline-block;
+
+		}
+		span.dog-cicle{
+			position: relative;
+			right:10px;
+			width:5px;
+			height:5px;
+			border:3px solid #247EFF;
+			border-radius: 10px; 
+			background-color: #fff;
+		}
+		span.dog-line{
+			position: absolute;
+			right:0px;
+			width:101%;
+			height:0;
+			border:1px solid #247EFF;
+		}
+
+		footer{
+			width: 10%;
+			height: 8%;
+			line-height: 5em;
+			font-size: 1.2em;
+			text-align: center;
+			position: fixed;
+			bottom: 5px;
+    		right:10px;
+			background-color: #E9EAEE;
+		}
+		
+		@media (max-width: 1200px){
+			section{
+				width:1000px;
+			}
+			div.box-dog{
+				left: -10%;
+				height: 455px;
+			}
+			aside{
+				padding-top: 3%;
+			}
+			footer{
+				width: 100%;
+				bottom: auto;
+				left: 0;
+				right: auto;
+				margin-top: 50px;
+				position:absolute;
+		    }
+		}
+		@media (max-width: 400px){
+			section{
+				width:300px;
+			}
+			aside{
+				padding-top: 10%;
+			}
+			div.box-dog{
+				width: 100%;
+				background-size:50% 50% ;
+				height: 200px;
+			}
+			.dog{
+				background-size:50% 50% ;
+			}
+			footer{
+				line-height: 3em;
+			}
+		}
+	</style>
+</head>
+<body>
+<section>
+	<h1>Change background color</h1>
+	<h2>Change the current color, the color of the car in the picture below will change its color through the blend mode.</h2>
+	<h4>The background color of the car is #9F3911, other's colors are black or white.</h4>
+  <aside>
+    <input type="color" value="#0000ff" data-toolip="color-change" id= "color">
+    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/18515/9284591662_38b0438418_h.jpg">
+    <label class="color-fill"></label>
+    <label class="color-mode"><span>模式hue</span></label>
+    <label class="color-back"><span>背景色</span></label>
+    <label for="color" class="color-pre"><span>前景色</span></label>
+  </aside>
+  <h2>The mouse moves the bottom right corner of the line, and the color of the car in the picture changes its color.</h2>
+  <div class="box-car">
+	<textarea class="car" cols="30" rows="10" disabled></textarea>
+  </div>
+  <h2>The mouse moves to the lower right corner of the line, the dog becomes clearer in the picture.</h2>
+  <div class="box-dog">
+	<textarea class="dog" cols="30" rows="10" disabled></textarea>
+	<span class="dog-cicle"></span>
+	<span class="dog-line"></span>
+  </div>
+  <footer>@Written by uncle</footer>
+</section>
+</body>
+</html>
