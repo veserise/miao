@@ -287,16 +287,35 @@ var veserise = function () {
 	function map ( ary, mapper ){
 		var result = []
 		if (typeof mapper == 'function'){
-			for ( var key in ary ) {
-				var s = mapper( ary[key], key, ary )
-				result.push(s)
+			if(typeof ary == 'array'){
+				for (var i = 0; i < ary.length; i++) {
+					var s = mapper( ary[i], i, ary )
+					result.push(s)
+				}
+			} 
+			if(typeof ary == 'object'){
+				for ( var key in ary ) {
+					var s = mapper( ary[key], key, ary )
+					result.push(s)
+				}
 			}
+			
 			return result
 		}
 		if ( typeof mapper == 'string'){
-			for (var key in ary) {
-				if( mapper in ary[key] ){
-					result.push(ary[key][mapper])
+			var s = mapper.split(".")
+			var x = s[0] , y = s[1]
+			if( y ){
+				for (var key in ary) {
+					if( x in ary[key] ){
+						result.push(ary[key][x][y])
+					}
+				}
+			}else{
+				for (var key in ary) {
+					if( x in ary[key] ){
+						result.push(ary[key][x])
+					}
 				}
 			}
 
@@ -519,7 +538,7 @@ var veserise = function () {
 	 * @return  {true / false}
 	*/
 	function isArray(val){
-        return Object.prototype.toString.call(val) == "[Object Array]"
+        return Object.prototype.toString.call(arg) === '[object Array]'
     }
 
 
@@ -602,7 +621,13 @@ var veserise = function () {
 	*/
 	function toArray (ary){
 		if( typeof ary == 'string'){
-			return ary.split(',')
+			var res = ary.split('')
+			var jum = []
+			for (var i = 0; i < res.length; i++) {
+				jum.push(res[i])
+			}
+
+			return jum
 		}
 
 		if( typeof ary == 'object'){
