@@ -538,7 +538,7 @@ var veserise = function () {
 	 * @param val {object/ number/fucntion / string }
 	 * @return  {true / false}
 	*/
-	function isArray(val){
+	function isArray(arg){
         return Object.prototype.toString.call(arg) === '[object Array]'
     }
 
