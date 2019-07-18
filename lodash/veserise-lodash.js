@@ -288,14 +288,15 @@ var veserise = function () {
 		var result = []
 		if (typeof mapper == 'function'){
 			if(typeof ary == 'array'){
-				for (var i = 0; i < ary.length; i++) {
-					var s = mapper( ary[i], i, ary )
+				for ( var key in ary ) {
+					var s = mapper( ary[key], key, ary )
 					result.push(s)
 				}
 			} 
 			if(typeof ary == 'object'){
-				for ( var key in ary ) {
-					var s = mapper( ary[key], key, ary )
+				
+				for (var i = 0; i < ary.length; i++) {
+					var s = mapper( ary[i], i, ary )
 					result.push(s)
 				}
 			}
