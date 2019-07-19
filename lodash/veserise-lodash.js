@@ -90,7 +90,9 @@ var veserise = function () {
 	*/
 	function differenceBy(ary, ...values){
 		var itera = last(values)
-		var value = values.slice(0,values.length - 1)[0]
+		if( Array.isArray(itera) ) itera = undefined 
+
+		var value = values.slice(0, values.length - 1)[0]
 		var result = [] , jum = []
 
 		if ( typeof itera == 'function' ){
@@ -109,7 +111,7 @@ var veserise = function () {
 			var str = flattenDeep(value).map(i => i[itera])
 			return ary.filter(item => !str.includes(item[itera]))
 		}
-		if( typeof itera  == 'array') return difference( ary ,...values)
+		if( typeof itera  == 'undefined') return difference( ary ,...values)
 	}
 
 
@@ -243,11 +245,17 @@ var veserise = function () {
  	*/
 	function filter(ary, test){
 		var result = []
-		for (var i = 0; i < ary.length; i++) {
-			if ( test(ary[i], i, ary) ){
-                 result.push(ary[i])
+		if( typeof test == 'function'){
+			for (var i = 0; i < ary.length; i++) {
+				if ( test(ary[i], i, ary) ){
+	                 result.push(ary[i])
+				}
 			}
 		}
+		if( typeof test == 'string'){
+
+		}
+		
 		return result
 	}
 
@@ -293,10 +301,9 @@ var veserise = function () {
 					result.push(s)
 				}
 			} 
-			if(typeof ary == 'object'){
-				
+			if( typeof ary == 'object' ){
 				for (var i = 0; i < ary.length; i++) {
-					var s = mapper( ary[i], i, ary )
+					var s = mapper(ary[i], i, ary )
 					result.push(s)
 				}
 			}
@@ -473,12 +480,12 @@ var veserise = function () {
 	 * @return  {f}
 	 *
 	*/
-	function curry (f) {
-		var args = Array.from(arguments)
-		var s 
+	function curry ( f , arity = f.length , gd ) { 
+		arity = gd ? undefined : arity
+		var s = []
 		return function(){
 			var arg = Array.from(arguments)
-			if( arg.length == s.length ){
+			if( arg.length == arity ){
 				return f.apply(null, s)
 			}else{
 				s = s.concat(arg)
@@ -534,25 +541,70 @@ var veserise = function () {
 	}
 
 	/**
+	 * isArguments
+	 * @param val {object/ number/fucntion / string }
+	 * @return  {true / false}
+	*/
+	function isArguments(value){
+        return Object.prototype.toString.call(value) === '[object Arguments]'
+    }
+
+	/**
 	 * isArray
 	 * @param val {object/ number/fucntion / string }
 	 * @return  {true / false}
 	*/
-	function isArray(arg){
-        return Object.prototype.toString.call(arg) === '[object Array]'
+	function isArray(value){
+        return Object.prototype.toString.call(value) === '[object Array]'
     }
 
-
+    /**
+	 * isBoolean
+	 * @param val {object/ number/fucntion / string }
+	 * @return  {true / false}
+	*/
+	function isBoolean(value){
+		return Object.prototype.toString.call(value) == '[object Boolean]'
+    }
 
     /**
-	 * isString
+	 * isDate
+	 * @param val {object/ number/fucntion / string }
+	 * @return  {true / false}
+	*/
+	function isDate(value){
+        return Object.prototype.toString.call(value) == '[object Date]'
+    }
+
+    /**
+	 * isDate
+	 * @param val {object/ number/fucntion / string }
+	 * @return  {true / false}
+	*/
+	function isDate(value){
+        return Object.prototype.toString.call(value) == '[object Date]'
+    }
+
+    /**
+	 * isElement
 	 * @param str {object/ number/fucntion / string }
 	 * @return  {true / false}
 	*/
-	function isString (str) {
-		return Object.prototype.toString.call(str) == "[object String]"
+	function isElement (value) {
+		return Object.prototype.toString.call(value) == '[object HTMLBodyElement]'
 	}
 
+	/**
+	 * isEmpty
+	 * @param str {object/ number/fucntion / string }
+	 * @return  {true / false}
+	*/
+	function isEmpty (value) {
+		 if(value == true || value == false || value == null) return true
+		 if( typeof value == 'object' && value == null ) return true
+		 if( typeof value == 'array' && value.length == 0) return true
+		 return false
+	}
 
 
 	/**
@@ -610,6 +662,19 @@ var veserise = function () {
 	}
 
 	/**
+	 * padEnd
+	 * @param obj {Object}
+	 *
+	 *@example
+	 * forOwn({a:1,b:2},(val , key ,obj))
+	*/
+	function padEnd(obj , len){
+		
+	}
+
+
+
+	/**
 	 * toArray
 	 * @param ary {}
 	 * @return {[]}
@@ -643,12 +708,27 @@ var veserise = function () {
 		return Array.from(ary)
 	}
 
+	/**
+	 * matches
+	 * @param source {}
+	 * @return {[]}
+	 *
+	*/
+	// function matches (source){
+	// 	return function(){
+	// 		for (var i = 0; i < arguments.length; i++) {
+	// 			arguments[i]
+	// 		}
+	// 	}
+	// }
+
+
+
 	return	{
 		chunk,
 		compact,
 		difference,
 		differenceBy,
-		isArray,
 		drop,
 		dropRight,
 		head,
@@ -678,6 +758,12 @@ var veserise = function () {
 		some,
 		negate,
 		isObject,
+		isArray,
+		isArguments,
+		isBoolean,
+		isDate,
+		isElement,
+		//isEmpty,
 		flattenDeep,
 		toArray
 		//isString
