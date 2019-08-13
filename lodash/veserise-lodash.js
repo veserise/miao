@@ -89,29 +89,23 @@ var veserise = function () {
 	 * differenceBy([{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }], 'x')
 	*/
 	function differenceBy(ary, ...values){
-		var itera = last(values)
-		if( Array.isArray(itera) ) itera = undefined 
 
-		var value = values.slice(0, values.length - 1)[0]
-		var result = [] , jum = []
+	    if (Array.isArray(values[values.length - 1])) {
+	        return difference(ary, ...values)
+	    }
+	    var val = values.reduce((res, cur) => {
+	        return res.concat(cur)
+	    })
+		var itera = last(val) , func 
+	    if (typeof itera == 'string') {
+	        func = obj => obj[itera]
+	    }
+	    if (typeof itera == 'function') {
+	        func = obj => itera(obj)
+	    }
+	    val = val.map(func)
 
-		if ( typeof itera == 'function' ){
-			for (var i = 0; i < value.length; i++) {
-				jum.push( itera(value[i]) )
-			}
-			for (var i = 0; i < ary.length; i++) {
-				var s = itera(ary[i])
-				if( !jum.includes(s) ){
-					result.push(ary[i])
-				}
-			}
-			return result
-		}
-		if( typeof itera == 'string' ){
-			var str = flattenDeep(value).map(i => i[itera])
-			return ary.filter(item => !str.includes(item[itera]))
-		}
-		if( typeof itera  == 'undefined') return difference( ary ,...values)
+	    return ary.filter(item => !val.includes(func(item)))
 	}
 
 
@@ -134,8 +128,9 @@ var veserise = function () {
 		return result
 	}
 
+
 	/**
-	 * reverse
+	 * fill
 	 * @param ary {Array} 
 	 * @return  {Array} 
 	*/
@@ -150,7 +145,156 @@ var veserise = function () {
 		return res
 	}
 
+	/**
+	 * findIndex
+	 * @param ary {Array} 
+	 * @return  {number} 
+	*/
+	function findIndex(ary, pre  = _.identity, fromIndex = 0){
 
+		for (var i = fromIndex; i < ary.length; i++) {
+			if( Array.isArray(pre) ){
+				if( ary[i][pre[0]] == pre[1] ){
+					return i
+				}
+			}
+
+			if( typeof pre == 'string' ){
+				if( ary[i][pre] ){
+					return i
+				}
+
+			} 
+			
+			if( typeof pre == 'function'){
+				if( pre(ary[i]) ){
+					return i
+				}
+			}
+
+			if( typeof pre == 'object'){
+			 	var flag = true
+			 	for (var key in pre) {
+			 		if( pre[key] != ary[i][key] || ary[i][key] == undefined){
+			 			flag = false
+			 		}
+			 	}
+			 	if(flag) return i
+			}
+		}
+		return -1
+	}
+
+	/**
+	 * findLastIndex
+	 * @param ary {Array} 
+	 * @return  {number} 
+	*/
+	function findLastIndex(ary, pre  = _.identity, fromIndex = ary.length-1){
+
+		for (var i = fromIndex; i >= 0 ; i--) {
+			if( Array.isArray(pre) ){
+				if( ary[i][pre[0]] == pre[1] ){
+					return i
+				}
+			}
+
+			if( typeof pre == 'string' ){
+				if( ary[i][pre] != undefined){
+					return i
+				}
+
+			} 
+			
+			if( typeof pre == 'function'){
+				if( pre(ary[i]) ){
+					return i
+				}
+			}
+
+			if( typeof pre == 'object'){
+			 	var flag = true
+			 	for (var key in pre) {
+			 		if( pre[key] != ary[i][key] || ary[i][key] == undefined){
+			 			flag = false
+			 			break
+			 		}
+			 	}
+			 	if(flag) return i
+			}
+		}
+		return -1
+	}
+
+
+	/**
+	 * flatten
+	 * @param ary {[,[,[,[]]]]}
+	 * @return  {[]}
+	*/
+	function flatten(ary){
+		var result = []
+		for (var i in ary ) {
+			if( Array.isArray(ary[i]) ){
+				result.push(...ary[i])
+			}else{
+				result.push(ary[i])
+			}
+		}
+		return result
+	}
+
+    /**
+	 * flattenDeep
+	 * @param ary {[,[,[,[]]]]}
+	 * @return  {[]}
+	*/
+	function flattenDeep(ary){
+		var str = ary.toString().split(",")
+		var result = []
+		for (var i = 0; i < str.length; i++) {
+			result.push(+str[i])
+		}
+		return result
+	}
+
+	/**
+	 * flattenDepth
+	 * @param ary {[,[,[,[]]]]}
+	 * @return  {[]}
+	*/
+	function flattenDepth(ary , dept = 1 ){
+
+		var result = ary
+		while ( dept > 0 ){
+			result = flatten(result)
+			dept--
+		}
+		
+		return result
+	}
+
+	/**
+	 * fromPairs
+	 * @param ary {[,[,[,[]]]]}
+	 * @return  {[]}
+	*/
+	function fromPairs(ary){
+		
+		var result = {}
+		for (var i = 0; i < ary.length; i++) {
+			result[ary[i][0]] = ary[i][1]
+		}
+		
+		return result
+	}
+
+
+	/**
+	 * flip
+	 * @param f {f}
+	 * @return  {[]}
+	*/
 	function flip (f){
 		return function(...args){
 			return f(...args.reverse() )
@@ -180,16 +324,6 @@ var veserise = function () {
 		return ary[0]
 	}
 
-	/**
-	 * last
-	 * @param ary {Array} 
-	 * @return {Number} the last data in array
- 	*/
-	function last(ary){
-		if(ary.length == 0) return undefined
-		return ary[ary.length-1]
-	}
-
 
 	/**
 	 * indexOf
@@ -202,10 +336,35 @@ var veserise = function () {
 		for (var i = fromIndex; i < ary.length; i++) {
 			if ( ary[i] == value){
 				return i
-			}
+			}else if (ary[i] != ary[i] && value != value) {
+            	return i
+        	}
 		}
 		return -1
 	}
+
+	/**
+	 * initial
+	 * @param ary {Array} 
+	 * @return {Array} 
+	*/
+	function initial(ary){
+		return ary.slice(0, ary.length - 1 )
+	}
+
+	/**
+	 * intersection
+	 * @param ary {Array} 
+	 * @return {Number} the last data in array
+ 	*/
+	function intersection(...arys){
+		var res = arys[0].slice()
+		for (var i = 1; i < arys.length; i++) {
+			res = res.filter(it => arys[i].includes(it))
+		}
+		return res
+	}
+
 
 	/**
 	 * join
@@ -224,7 +383,66 @@ var veserise = function () {
 		return str
 	}
 
+	/**
+	 * last
+	 * @param ary {Array} 
+	 * @return {} 
+ 	*/
+	function last(ary){
+		if(ary.length == 0) return null
+		return ary[ary.length - 1]
+	}
+
+	/**
+	 * lastIndexOf
+	 * @param ary {Array} 
+	 * @param value {Number} 
+	 * @return {Number} return the value' position in array 
+	*/
+	function lastIndexOf(ary, value , fromIndex = ary.length-1){
+		if( ary.length == 0 ) return undefined
+		for (var i = fromIndex; i >= 0; i--) {
+			if ( ary[i] == value){
+				return i
+			}else if (ary[i] != ary[i] && value != value) {
+            	return i
+        	}
+		}
+		return -1
+	}
+
+	/**
+	 * nth
+	 * @param ary {Array} 
+	 * @param value {Number} 
+	 * @return {Number} return the value' position in array 
+	*/
+	function nth(ary, n = 0){
+		if( ary.length == 0 ) return null
+		if( n >= 0 && n < ary.length) return ary[n]
+		else return ary[-n]
+	}
 	
+	/**
+	 * pull
+	 * @param ary {Array} 
+	 * @param value {Number} 
+	 * @return {Number} return the value' position in array 
+	*/
+	function pull(ary, ...values){
+		var result = [] , map = {}
+		for (var i = 0; i < values.length; i++) {
+			map[values[i]] = i
+		}
+		for (var j = 0; j < ary.length; j++) {
+			if ( !(ary[j] in map) ){
+				result.push(ary[j])
+			}
+		}
+		ary = result
+		return ary
+	}
+
 	/**
 	 * reduce
 	 * @param ary {Array} 
@@ -275,6 +493,124 @@ var veserise = function () {
 	}
 
 	/**
+	 * sortedIndex
+	 * @param ary {Array} 
+	 * @return {Array} 
+ 	*/
+	function sortedIndex( ary, value){
+		var end = ary.length -1 , i = 0 
+		if( value > ary[end] ) return end + 1
+		while( i <= end){
+			var mid = Math.floor( (end + i) / 2)
+			var m = ary[mid]
+			if( value >= ary[i] && value <= ary[end] && (end - i) <= 1){
+				return i + 1
+
+			}else if( value < m ){
+				end = mid
+
+			}else if( value > m ){
+				i = mid
+
+			}else{
+				return i + 1
+			}
+		}
+		return i + 1
+
+	}
+
+
+	/**
+	 * union
+	 * @param ary {Array} 
+	 * @return {Array} 
+ 	*/
+	function union(...arys){
+		return Array.from(new Set(flatten(arys)))
+	}
+
+	/**
+	 * unionBy
+	 * @param ary {Array} 
+	 * @return {Array} 
+ 	*/
+	function unionBy(...arys){
+		var iteratee = last(arys)
+		var ary = flatten(arys.slice(0,arys.length - 1))
+		return uniqBy(ary, iteratee)
+	}
+
+	/**
+	 * uniq
+	 * @param arg {Array}
+	 * @return  {}
+	*/
+	function uniq (ary){
+		return Array.from(new Set(ary))
+	}
+
+	/**
+	 * zip
+	 * @param ary {Array} 
+	 * @return {Array} 
+ 	*/
+	function zip(...arys){
+		var res = [], re = []
+		var len = arys[0].length, m = arys.length
+		var i = j = 0
+
+		while(i < m ){
+			re.push(0)
+			i++
+		}
+		while(j < len ){
+			res.push(re)
+			j++
+		}
+
+		for ( i = 0; i < m; i++) {
+			for ( j = 0; j < len; j++) {
+				res[j][i] = arys[i][j]
+			}
+		}
+
+		return res
+	}
+
+
+
+
+	/**
+	 * uniqBy
+	 * @param arg {Array}
+	 * @return  {}
+	*/
+	function uniqBy (ary, iteratee = _.identity){
+		var res = [] , map ={}
+
+		if(typeof iteratee == 'string'){
+			ary.forEach(it => {
+				var val = it[iteratee]
+				if( !(val in map) ){
+					map[val] = val
+					res.push(it)
+				}
+			})
+		}else{
+			ary.forEach(it => {
+				var val = iteratee(it)
+				if( !(val in map) ){
+					map[val] = it
+					res.push(it)
+				}
+			})
+		}
+
+		return res
+	}
+
+	/**
 	 * forEach
 	 * @param ary {Array} 
 	 * @return {Array} 
@@ -292,44 +628,24 @@ var veserise = function () {
 	 * @param key {}
 	 * @return  {[]} 
 	*/
-	function map ( ary, mapper ){
+	function map ( collection , iteratee = veserise.identity ){
 		var result = []
-		if (typeof mapper == 'function'){
-			if(typeof ary == 'array'){
-				for ( var key in ary ) {
-					var s = mapper( ary[key], key, ary )
-					result.push(s)
-				}
-			} 
-			if( typeof ary == 'object' ){
-				for (var i = 0; i < ary.length; i++) {
-					var s = mapper(ary[i], i, ary )
-					result.push(s)
-				}
-			}
-			
-			return result
-		}
-		if ( typeof mapper == 'string'){
-			var s = mapper.split(".")
-			var x = s[0] , y = s[1]
-			if( y ){
-				for (var key in ary) {
-					if( x in ary[key] ){
-						result.push(ary[key][x][y])
-					}
-				}
-			}else{
-				for (var key in ary) {
-					if( x in ary[key] ){
-						result.push(ary[key][x])
-					}
-				}
-			}
+		iteratee = iteratee(iteratee)
 
-			return result
-		}
+	    if ( Array.isArray(collection) ) {
+	        for (var i = 0; i < collection.length; i++) {
+	            result.push(iteratee(collection[i], i, collection))
+	        }
+	    } else {
+	        for (var keys in collection) {
+	            result.push(iteratee(collection[keys], keys, collection))
+	        }
+	    }
+
+	    return result
 	}
+
+
 
 	/**
 	 * keyBy
@@ -419,6 +735,7 @@ var veserise = function () {
 	}
 
 
+
 	/**
 	 * unary
 	 * @param f {function} slice the first data in array
@@ -480,16 +797,12 @@ var veserise = function () {
 	 * @return  {f}
 	 *
 	*/
-	function curry ( f , arity = f.length , gd ) { 
-		arity = gd ? undefined : arity
-		var s = []
-		return function(){
-			var arg = Array.from(arguments)
-			if( arg.length == arity ){
-				return f.apply(null, s)
+	function curry ( f , len = f.length ) { 
+		return function(...args){
+			if( args.length < len  ){
+				return curry(f.bind(null,...args), len - args.length )
 			}else{
-				s = s.concat(arg)
-				return f
+				return f(...args)
 			}
 		}
 	}
@@ -559,6 +872,16 @@ var veserise = function () {
     }
 
     /**
+	 * isArrayLike
+	 * @param val {object/ number/fucntion / string }
+	 * @return  {true / false}
+	*/
+	function isArrayLike(value){
+		if (typeof value != 'function' && value.length >= 0 && value.length <= Number.MAX_SAFE_INTEGER) return true
+        else return false
+    }
+
+    /**
 	 * isBoolean
 	 * @param val {object/ number/fucntion / string }
 	 * @return  {true / false}
@@ -600,10 +923,44 @@ var veserise = function () {
 	 * @return  {true / false}
 	*/
 	function isEmpty (value) {
-		 if(value == true || value == false || value == null) return true
-		 if( typeof value == 'object' && value == null ) return true
-		 if( typeof value == 'array' && value.length == 0) return true
-		 return false
+		if(value == true || value == false || value == null) return true
+		if( typeof value == 'object' && 
+			(value == '' || value == null || value.length == 0 || value.size == 0 || value instanceof Object) 
+			) return true
+		return false
+	}
+
+	/**
+	 * isEqual
+	 * @param str {object/ number/fucntion / string }
+	 * @return  {true / false}
+	*/
+	function isEqual (value , other ) {
+		if( value === other) return true
+		if( typeof value == typeof other){
+			for (var key in value) {
+				if( !( key in other ) || value[key] != other[key]){
+					return false
+				}
+			}
+			for (var key in other) {
+				if( !( key in value ) || value[key] != other[key]){
+					return false
+				}
+			}
+			return true
+		}
+		return false
+	}
+
+
+	/**
+	 * isError
+	 * @param value {}
+	 * @return  {true / false}
+	*/
+	function isError (value ) {
+		return Object.prototype.toString.call(value) == '[object Error]'
 	}
 
 
@@ -617,21 +974,124 @@ var veserise = function () {
       return value != null && (type == 'object' || type == 'function')
     }
 
-
-
     /**
-	 * flattenDeep
-	 * @param ary {[,[,[,[]]]]}
-	 * @return  {[]}
+	 * instanof
+	 * @param value fucntion }
+	 * @return  {true / false}
 	*/
-	function flattenDeep(ary){
-		var str = ary.toString().split(",")
-		var result = []
-		for (var i = 0; i < str.length; i++) {
-			result.push(+str[i])
-		}
-		return result
+	function instanof(ary , value) {
+      return value != null && (type == 'object' || type == 'function')
+    }
+
+
+	/**
+	 * isFinite
+	 * @param value {}
+	 * @return  {true / false}
+	*/
+	function isFinite (value ) {
+		return Number.isFinite(value)
 	}
+
+	/**
+	 * isFunction
+	 * @param value {}
+	 * @return  {true / false}
+	*/
+	function isFunction (value ) {
+		return Object.prototype.toString.call(value) == '[object Function]'
+	}
+
+
+	/**
+	 * isInteger
+	 * @param value {}
+	 * @return  {true / false}
+	*/
+	function isInteger ( value ) {
+		return Number.isInteger(value)
+	}
+
+	/**
+	 * isLength
+	 * @param value {}
+	 * @return  {true / false}
+	*/
+	function isLength ( value ) {
+		return ToLength(value)
+	}
+
+	/**
+	 * toLength
+	 * @param value {}
+	 * @return  {true / false}
+	*/
+	// function toLength ( value ) {
+	// 	if( isArrayLike(value) ){
+
+	// 	}
+	// 	return  ToLength(value)
+	// }
+
+	/**
+	 * isMap
+	 * @param value {}
+	 * @return  {true / false}
+	*/
+	function isMap ( value ) {
+		return Object.prototype.toString.call(value) == '[object Map]'
+	}
+
+
+	/**
+	 * isMatch
+	 * @param obj,source {}
+	 * @return  {true / false}
+	*/
+	function isMatch (obj,  source ) {
+		if(obj === source ) return true
+		for(var key in source ){
+			if( typeof source[key] == 'object' && source[key] != null){
+				if(! isMatch(obj[key], source(key))) return false
+			}else{
+				if( source[key] != obj[key]) return false
+			}
+		}
+		return true
+	}
+
+	/**
+	 * min
+	 * @param array {Array}
+	 * @return  {}
+	*/
+	function min (array) {
+		if( array.length == 0 ) return undefined
+		var min = Infinity
+		array.map(item=> {
+			if( min > item ){
+				min = item
+			}
+		})
+		return min
+	}
+
+	/**
+	 * max
+	 * @param array {Array }
+	 * @return  {}
+	*/
+	function max (array) {
+		if( array.length == 0 ) return undefined
+		var max = -Infinity
+		array.map(item=> {
+			if( max < item ){
+				max = item
+			}
+		})
+		return max
+	}
+
 
 	/**
 	 * run
@@ -714,14 +1174,22 @@ var veserise = function () {
 	 * @return {[]}
 	 *
 	*/
-	// function matches (source){
-	// 	return function(){
-	// 		for (var i = 0; i < arguments.length; i++) {
-	// 			arguments[i]
+	function matches (source){
+		return function(obj){
+			return isMatch(obj, source)
+		}
+	}
+
+	
+	// function iteratee(){
+	// 	if(typeof this == 'string'){
+	// 		return this
+	// 	}else{
+	// 		return function itera(it){
+	// 			return this(it)
 	// 		}
 	// 	}
 	// }
-
 
 
 	return	{
@@ -731,18 +1199,34 @@ var veserise = function () {
 		differenceBy,
 		drop,
 		dropRight,
-		head,
-		indexOf,
 		fill,
+		findIndex,
+		findLastIndex,
+		flatten,
+		flattenDeep,
+		flattenDepth,
+		fromPairs,
+		head,
+		last,
+		indexOf,
+		lastIndexOf,
+		initial,
+		intersection,
+		nth,
 		join,
 		flip,
-		last,
+		pull,
 		concat,
 		reverse,
 		reduce,
 		filter,
 		slice,
+		sortedIndex,
+		union,
+		unionBy,
 		forEach,
+		uniq,
+		uniqBy,
 		map,
 		keyBy,
 		spread,
@@ -757,15 +1241,36 @@ var veserise = function () {
 		every,
 		some,
 		negate,
+		//zip,
+
+
+
+
 		isObject,
 		isArray,
+		isArrayLike,
 		isArguments,
 		isBoolean,
 		isDate,
 		isElement,
-		//isEmpty,
-		flattenDeep,
-		toArray
+		isEmpty,
+		isEqual,
+		isError,
+		isFinite,
+		isFunction,
+		isInteger,
+		//isLength,
+		isMap,
+		isMatch,
+
+
+
+
+		toArray,
+		min,
+		max,
+		matches
+		//iteratee
 		//isString
 	}
 
