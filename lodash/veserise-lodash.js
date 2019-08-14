@@ -201,7 +201,7 @@ var veserise = function () {
 
 			if( typeof pre == 'string' ){
 				if( ary[i][pre] != undefined){
-					return i
+					return fromIndex - i
 				}
 
 			} 
@@ -549,38 +549,7 @@ var veserise = function () {
 	function uniq (ary){
 		return Array.from(new Set(ary))
 	}
-
-	/**
-	 * zip
-	 * @param ary {Array} 
-	 * @return {Array} 
- 	*/
-	function zip(...arys){
-		var res = [], re = []
-		var len = arys[0].length, m = arys.length
-		var i = j = 0
-
-		while(i < m ){
-			re.push(0)
-			i++
-		}
-		while(j < len ){
-			res.push(re)
-			j++
-		}
-
-		for ( i = 0; i < m; i++) {
-			for ( j = 0; j < len; j++) {
-				res[j][i] = arys[i][j]
-			}
-		}
-
-		return res
-	}
-
-
-
-
+	
 	/**
 	 * uniqBy
 	 * @param arg {Array}
@@ -608,6 +577,97 @@ var veserise = function () {
 		}
 
 		return res
+	}
+
+	/**
+	 * zip
+	 * @param ary {Array} 
+	 * @return {Array} 
+ 	*/
+	function zip(...arys){
+ 		var maxlen = arys.reduce((max, arr) => Math.max(max, arr.length), 0)
+    	var res = Array(maxlen).fill(0).map(it => Array(arys.length))
+
+		for (var  i = 0; i < maxlen; i++) {
+			for (var  j = 0; j < arys.length; j++) {
+				res[i][j] = arys[j][i]
+			}
+		}
+
+		return res
+	}
+
+
+	/**
+	 * unzip
+	 * @param ary {Array} 
+	 * @return {Array} 
+ 	*/
+	function unzip(ary){
+		var res = []
+		for (var i = 0; i < ary[0].length; i++) {
+	        res[i] = []
+	        for (var j = 0; j < ary.length; j++) {
+	            res[i][j] = ary[j][i]
+	        }
+	    }
+
+		return res
+	}
+
+	/**
+	 * unzipWith
+	 * @param ary {Array} 
+	 * @return {Array} 
+ 	*/
+	function unzipWith(ary, iteratee = _.identity ){
+ 		var res = [] , re = []
+		for (var i = 0; i < ary[0].length; i++) {
+	        res[i] = []
+	        for (var j = 0; j < ary.length; j++) {
+	            res[i][j] = ary[j][i]
+	        }
+	        re.push(res[i].reduce(iteratee))
+	    }
+
+		return res
+	}
+
+	/**
+	 * without
+	 * @param ary {Array} 
+	 * @return {Array} 
+ 	*/
+	function without(ary, ...values ){
+		var res = []
+ 		for (var i = 0; i < ary.length; i++) {
+ 			if( values.includes( ary[i] ) == false ){
+ 				res.push( ary[i] )
+ 			}
+ 		}
+
+		return res
+	}
+
+	/**
+	 * xor
+	 * @param ary {Array} 
+	 * @return {Array} 
+ 	*/
+	function xor(...arys){
+		var res = [], map = {}, ins = []
+		var res = flatten(arys)
+
+		for (var i = 0; i < res.length; i++) {
+			if( res.lastIndexOf(res[i]) == i ){
+				if( !(res[i] in map)  ){
+					ins.push(res[i])
+				}
+			}else{
+				map[res[i]] = 1
+			}
+		}
+		return ins
 	}
 
 	/**
@@ -752,7 +812,7 @@ var veserise = function () {
 	 * @param arg {}
 	 * @return  {}
 	*/
-	function  bind (f){
+	function bind (f){
 		var args = Array.from(arguments)
 		return function(){
 			var arg = Array.from(arguments)
@@ -1092,6 +1152,16 @@ var veserise = function () {
 		return max
 	}
 
+	/**
+	 * add
+	 * @param array {Array }
+	 * @return  {}
+	*/
+	function add (a, b ) {
+		return a + b
+	}
+
+
 
 	/**
 	 * run
@@ -1227,6 +1297,10 @@ var veserise = function () {
 		forEach,
 		uniq,
 		uniqBy,
+		without,
+		xor,
+
+
 		map,
 		keyBy,
 		spread,
@@ -1241,8 +1315,9 @@ var veserise = function () {
 		every,
 		some,
 		negate,
-		//zip,
-
+		zip,
+		unzip,
+		unzipWith,
 
 
 
@@ -1269,6 +1344,7 @@ var veserise = function () {
 		toArray,
 		min,
 		max,
+		add,
 		matches
 		//iteratee
 		//isString
